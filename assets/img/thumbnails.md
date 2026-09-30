@@ -25,6 +25,18 @@ Analytical UI:
 <img src="https://github.com/user-attachments/assets/69fad598-e3eb-4b53-9369-b6179df2c60d" width="50"/>
 
 
+
+Appendix https://github.com/user-attachments/assets/c6a79a2e-3400-44e5-bb71-41fced2f96da
+
+
+
+UI Demo https://github.com/user-attachments/assets/5cc1751d-c645-442b-ad9b-8480f01e64ac
+
+
+
+
+
+
 CS144 Dyno:
 
 <img src="https://github.com/user-attachments/assets/9a5b7751-874c-4624-9a4d-70dd3715310b" width="50%" />
