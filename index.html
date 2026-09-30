@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hugo F. — github.com/qyugo</title>
+  <title>Hugo F. - qyugo</title>
   <meta name="description" content="Actuator Hardware Enjoyer.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,6 +41,20 @@
     /* ---------- Header ---------- */
 
     header { padding: 4.5rem 0 3rem; border-bottom: 1px solid var(--line); }
+
+    /* Header with 3d model */
+    .header-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+    @media (min-width: 760px) {
+      .header-grid { grid-template-columns: 1.3fr 1fr; }
+    }
+
+    .model { width: 100%; max-width: 360px; aspect-ratio: 1; justify-self: center; }
+    @media (max-width: 759px) {
+      .model { max-width: 260px; }
+    }
+    .model canvas { display: block; width: 100%; height: 100%; }
+    /* End STL block */
+
     header h1 { font-size: 2rem; font-weight: 600; line-height: 1.2; margin: 0 0 0.35rem; }
     .role { color: var(--muted); font-size: 1.1rem; margin: 0 0 1.5rem; }
     .intro { max-width: 60ch; margin: 0 0 1.75rem; }
@@ -140,15 +154,22 @@
   <div class="wrap">
 
     <header>
-      <h1>Hugo F.</h1>
-      <p class="role">Actuator Hardware</p>
-      <p class="intro">
-        I enjoy building spinning things. Current favorite projects are the custom BLDC motor, custom driver, and quasi-direct-drive drivetrain for robotic actuation.
-      </p>
-      <ul class="links">
-        <li><a href="https://github.com/qyugo">GitHub</a></li>
-        <li><a href="mailto:ukahan251@gmail.com">ukahan251@gmail.com</a></li>
-      </ul>
+      <div class="header-grid">  <!-- NEW -->
+        <div>                    <!-- NEW -->
+          <h1>Hugo F.</h1>
+          <p class="role">Actuator Hardware</p>
+          <p class="intro">
+            I enjoy building spinning things. Current favorite projects are the custom BLDC motor, custom driver, and quasi-direct-drive drivetrain for robotic actuation.
+          </p>
+          <ul class="links">
+            <li><a href="github.com/qyugo">GitHub - @qyugo </a></li>
+            <li><a href="mailto:ukahan251@gmail.com">ukahan251@gmail.com</a></li>
+          </ul>
+        </div>                   <!-- NEW -->
+        <div class="model">      <!-- NEW -->
+          <canvas id="model" role="img" aria-label="3D model of a custom BLDC motor"></canvas>
+        </div>                   <!-- NEW -->
+      </div>                     <!-- NEW -->
     </header>
 
     <main>
@@ -190,11 +211,11 @@
       </p>
 
       <ul class="specs">
-        <li><span>Max Bus VoltageContinuous/Peak Curren/</span> 50V/30A/52A</li>
+        <li><span>Max Bus Voltage/Continuous/Peak Current/</span> 50V/30A/52A</li>
         <li><span>Gate Driver/MCU</span> DRV8323H/STM32G431RBT6</li>
         <li><span>Flashing</span> ST-Link SWD, USB</li>
         <li><span>Communications</span> CAN, USB to SLCAN</li>
-        <li><span>Regen</span> Firmware -> Motor Coil Dissipation</li>
+        <li><span>Regen</span> Firmware-controlled Motor Coil Dissipation</li>
         <li><span>Encoder</span> AS5047P Absolute Magnetic</li>
         <li><span>Status</span> Manufactured, writing firmware</li>
       </ul>
@@ -221,6 +242,74 @@
       dialog.addEventListener('click', e => {
         if (e.target === dialog) dialog.close();
       });
+    });
+  </script>
+
+  <!-- ===== NEW: 3D MODEL (loads assets/motormodel.stl) ===== -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module">
+    import * as THREE from 'three';
+    import { STLLoader } from 'three/addons/loaders/STLLoader.js';
+
+    // STL Settings
+    const MODEL_PATH = 'assets/motormodel.stl';
+    const MODEL_COLOR = 0x9a9c9f;          // grey metal
+    const TILT_X = -Math.PI / 4;           // 45° tilt, try 0 or Math.PI / 4
+    const SPIN_SPEED = 0.4;                // rad/s
+    // -----------------------------------
+
+    const canvas = document.getElementById('model');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
+    camera.position.set(0, 0.8, 3.3);
+    camera.lookAt(0, 0, 0);
+
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x303030, 1.2));
+    const key = new THREE.DirectionalLight(0xffffff, 2);
+    key.position.set(3, 4, 5);
+    scene.add(key);
+    const rim = new THREE.DirectionalLight(0xf2d44e, 0.8);
+    rim.position.set(-4, 2, -3);
+    scene.add(rim);
+
+    const pivot = new THREE.Group();
+    scene.add(pivot);
+
+    new STLLoader().load(MODEL_PATH, geometry => {
+      geometry.center();
+      geometry.computeBoundingSphere();
+      const mesh = new THREE.Mesh(
+        geometry,
+        new THREE.MeshStandardMaterial({ color: MODEL_COLOR, metalness: 0.4, roughness: 0.45 })
+      );
+      mesh.scale.setScalar(1 / geometry.boundingSphere.radius); 
+      mesh.rotation.x = TILT_X;
+      pivot.add(mesh);
+    });
+
+    function resize() {
+      const { width, height } = canvas.parentElement.getBoundingClientRect();
+      renderer.setSize(width, height, false);
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+    }
+    new ResizeObserver(resize).observe(canvas.parentElement);
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const clock = new THREE.Clock();
+    renderer.setAnimationLoop(() => {
+      if (!reduceMotion) pivot.rotation.y += SPIN_SPEED * clock.getDelta();
+      renderer.render(scene, camera);
     });
   </script>
 
