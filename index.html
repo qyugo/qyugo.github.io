@@ -255,16 +255,78 @@
 
       <div class="grid">
 
-        <!-- ===== CARD: YVGESC ===== -->
+
+<!-- ======================================== -->
+
+<!-- ===== CARD: YVGESC ===== -->
+
         <button class="card" type="button" data-preview="preview-yvgesc">
           <div class="thumb">
             <img src="https://github.com/user-attachments/assets/5b07d36f-3da9-4ea6-a4c7-dd8945dfa303" alt="Custom FOC Controller" loading="lazy">
           </div>
           <div class="card-body">
             <h3>YVGESC-1</h3>
-            <p>Custom FOC controller for servo control of Brushless DC motors.</p>
+            <p>Custom FOC controller for servo control of Brushless DC motors. Learning journey after studying many other COTS drivers and combining things I like.</p>
           </div>
         </button>
+
+<!-- ======================================== -->
+
+<!-- ===== CARD: Custom 8110 Motor ===== -->
+        <button class="card" type="button" data-preview="preview-8110motor">
+          <div class="thumb">
+            <img src="https://github.com/user-attachments/assets/cc1f39d2-67db-48ea-b813-7513684aa1c0" alt="assembledmotors" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h3>Custom Brushless DC Motor</h3>
+            <p> Building a three-phase BLDC and handwound with 26AWG copper using my analytical PM motor model. FDM printed housing, silicon steel stator, steel-epoxy welded magnets. Part 2/3 of my motormaxxing repo.</p>
+          </div>
+        </button>
+
+<!-- ======================================== -->
+
+<!-- ======================================== -->
+
+<!-- ===== CARD: Quasi Direct Drive ===== -->
+        <button class="card" type="button" data-preview="preview-qdd1">
+          <div class="thumb">
+            <img src="https://github.com/user-attachments/assets/67c1045a-c6aa-4b54-b15d-29fd0774b6e4" alt="qddcad" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h3>9:1 Planetary Quasi-Direct Drive Actuator</h3>
+            <p> 3D printed planetary actuator drivetrain with low gear reduction, designed for precise servo control and backdrivability.</p>
+          </div>
+        </button>
+
+<!-- ======================================== -->
+
+<!-- ===== CARD: Analytical MOdel ===== -->
+        <button class="card" type="button" data-preview="preview-motormodel">
+          <div class="thumb">
+            <img src="https://github.com/user-attachments/assets/69fad598-e3eb-4b53-9369-b6179df2c60d" alt="graphui" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h3>Analytical PM Motor Construction Model</h3>
+            <p> PyQt graphical UI implementing analytical equations for motor construction parameters to output KV, Kt and current density. Learning project while reading PM Motor Design by Duane Hanselman and other motor design sources.</p>
+          </div>
+        </button>
+
+<!-- ======================================== -->
+
+<!-- ===== CARD: Dyno 1 ===== -->
+        <button class="card" type="button" data-preview="preview-dyno1">
+          <div class="thumb">
+            <img src="https://github.com/user-attachments/assets/9a5b7751-874c-4624-9a4d-70dd3715310b" alt="dyno1" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h3>Old Alternator to Absorption Dynamometer</h3>
+            <p> Old Delco CS144 alternator turned into a test fixture for testing my custom motors.</p>
+          </div>
+        </button>
+
+<!-- ======================================== -->
+
+<!-- cards end -->
 
 
       </div>
@@ -276,8 +338,12 @@
 
   </div>
 
+  <!-- ====================PREVIEWS!!!==================== -->
+
+
   <!-- ===== YVGESC Preview ===== -->
-    <!-- ===== YVGESC Preview ===== -->
+<!-- ======================================== -->
+
   <dialog id="preview-yvgesc" aria-labelledby="preview-bldc-title">
     <div class="preview">
 
@@ -313,7 +379,7 @@
             <li>Cascaded PI Control</li>
             
           </ul>
-        </div>                                <!-- new -->
+        </div>
       </div>      
 
       <div class="preview-body">
@@ -342,8 +408,225 @@
 
     </div>
   </dialog>
+<!-- ==================END YVGESC PREVIEW====================== -->
 
-  <script>
+
+<!-- ======================================== -->
+<!-- ===== Custom BLDC Preview ===== -->
+  <dialog id="preview-8110motor" aria-labelledby="preview-8110motor">
+    <div class="preview">
+
+      <div>
+        <div class="gallery">
+          <div class="gallery-track">
+            <img src="https://github.com/user-attachments/assets/cc1f39d2-67db-48ea-b813-7513684aa1c0" alt="some build pics">
+            <img src="IMAGE_2_LINK" alt="Describe image 2" loading="lazy">
+          </div>
+          <button class="gallery-btn gallery-prev" type="button" aria-label="Previous image">&#8249;</button>
+          <button class="gallery-btn gallery-next" type="button" aria-label="Next image">&#8250;</button>
+          <span class="gallery-count"></span>
+        </div>
+
+        <div class="skills">
+          <h4>Skills used</h4>
+          <ul>
+            <li>Brushless Motors</li>
+            <li>PM Motor Design</li>
+            <li>CAD - Onshape</li>
+            <li>Soldering</li>
+            <li>3D Printing</li>
+            <li>Tolerancing</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="preview-body">
+        <h3 id="preview-project2-title">Custom BLDC Motor</h3>
+
+        <p>
+          A 3D printed (PETG for now), neodymium magnet-steel welded, hand-wound motor around a 8110-size silicon steel laminated stator core
+        </p>
+
+        <ul class="specs">
+          <li><span>Label</span> Value</li>
+          <li><span>Label</span> Value</li>
+          <li><span>Status</span> Value</li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="/motormaxxing/">Read full documentation</a>
+          <button class="btn" type="button" data-close>Close</button>
+        </div>
+      </div>
+
+    </div>
+  </dialog>
+
+  <!-- ====================end custom bldc preview==================== -->
+
+ <!-- ======================================== -->
+<!-- ===== QDD1 Preview ===== -->
+  <dialog id="preview-qdd1" aria-labelledby="preview-qdd1">
+    <div class="preview">
+
+      <div>
+        <div class="gallery">
+          <div class="gallery-track">
+            <img src="https://github.com/user-attachments/assets/67c1045a-c6aa-4b54-b15d-29fd0774b6e4" alt="qdd1cad">
+            <img src="IMAGE_2_LINK" alt="Describe image 2" loading="lazy">
+          </div>
+          <button class="gallery-btn gallery-prev" type="button" aria-label="Previous image">&#8249;</button>
+          <button class="gallery-btn gallery-next" type="button" aria-label="Next image">&#8250;</button>
+          <span class="gallery-count"></span>
+        </div>
+
+        <div class="skills">
+          <h4>Skills used</h4>
+          <ul>
+            <li>Robotic Drivetrains</li>
+            <li>Gearbox Design</li>
+            <li>Gear Backlash Control</li>
+            <li>Impedance Control</li>
+            <li>Finite Element Analysis</li>
+            <li>CAD - Onshape</li>
+          </ul>
+        </div>
+      </div>
+
+<div class="preview-body">
+        <h3 id="preview-project2-title">Quasi-Direct Drive Actuator (9:1 Planetary) </h3>
+
+        <p>
+          Version 1 of a backdrivable, high-torque drivetrain for a robotic joint built around an 8308 motor. FEA analysis on ring gear. V2 uses needle bearings instead of ball bearings.
+        </p>
+
+        <ul class="specs">
+          <li><span>Label</span> Value</li>
+          <li><span>Label</span> Value</li>
+          <li><span>Status</span> Value</li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="/quasi-direct-drives/">Read full documentation</a>
+          <button class="btn" type="button" data-close>Close</button>
+        </div>
+      </div>
+
+    </div>
+  </dialog>
+
+<!-- ====================end QDD1 preview==================== -->    
+
+  <!-- ======================================== -->
+<!-- ===== Analytical Model Preview ===== -->
+  <dialog id="preview-motormodel" aria-labelledby="preview-motormodel">
+    <div class="preview">
+
+      <div>
+        <div class="gallery">
+          <div class="gallery-track">
+            <img src="https://github.com/user-attachments/assets/69fad598-e3eb-4b53-9369-b6179df2c60d" alt="some build pics">
+            <img src="IMAGE_2_LINK" alt="Describe image 2" loading="lazy">
+          </div>
+          <button class="gallery-btn gallery-prev" type="button" aria-label="Previous image">&#8249;</button>
+          <button class="gallery-btn gallery-next" type="button" aria-label="Next image">&#8250;</button>
+          <span class="gallery-count"></span>
+        </div>
+
+        <div class="skills">
+          <h4>Skills used</h4>
+          <ul>
+            <li>PM Motor Design</li>
+            <li>Airgap Flux</li>
+            <li>Python</li>
+            <li>Slot Leakage</li>
+            <li>Magnetic Permeability</li>
+            <li>Thermal Management</li>
+          </ul>
+        </div>
+      </div>
+
+<div class="preview-body">
+        <h3 id="preview-project2-title">Analytical Three-Phase Motor Model and Graphical UI</h3>
+
+        <p>
+          PyQt5 UI implementing analytical equations for rotor geometry, material, dimensions, air gap distance, winding parameters, permanent magnet properties, correction factors (due to temperature, slot leakage) to produce estimated KV and current density for thermal management.
+        </p>
+
+        <ul class="specs">
+          <li><span>Label</span> Value</li>
+          <li><span>Label</span> Value</li>
+          <li><span>Status</span> Value</li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="/motormaxxing/">Read full documentation</a>
+          <button class="btn" type="button" data-close>Close</button>
+        </div>
+      </div>
+
+    </div>
+  </dialog>
+
+<!-- ====================end motor model preview==================== -->
+
+  <!-- ======================================== -->
+<!-- ===== Dyno 1 Preview ===== -->
+  <dialog id="preview-dyno1" aria-labelledby="preview-dyno1">
+    <div class="preview">
+
+      <div>
+        <div class="gallery">
+          <div class="gallery-track">
+            <img src="https://github.com/user-attachments/assets/9a5b7751-874c-4624-9a4d-70dd3715310b" alt="dyno1setup">
+            <img src="IMAGE_2_LINK" alt="Describe image 2" loading="lazy">
+          </div>
+          <button class="gallery-btn gallery-prev" type="button" aria-label="Previous image">&#8249;</button>
+          <button class="gallery-btn gallery-next" type="button" aria-label="Next image">&#8250;</button>
+          <span class="gallery-count"></span>
+        </div>
+
+        <div class="skills">
+          <h4>Skills used</h4>
+          <ul>
+            <li>Test Fixtures</li>
+            <li>Generators</li>
+            <li>Power Resistors</li>
+            <li>Current Sensing</li>
+            <li>Data Collection</li>
+            <li>Performance/Efficiency Characterization</li>
+            <li>Three-Phase Rectifiers</li>
+          </ul>
+        </div>
+      </div>
+
+<div class="preview-body">
+        <h3 id="preview-dyno1">Delco CS144 Alternator to Dynamometer</h3>
+
+        <p>
+          Deconstructing a broken alternator from my 1995 Chevrolet in high school, replacing the carbon brushes and rectifier, and implementing a load circuit to become a testing rig for characterizing my custom motors. Technically a BLDC-to-WRSM/brushed generator coupling. V2 dyno may perform better as it is BLDC-to-BLDC.
+        </p>
+
+        <ul class="specs">
+          <li><span>Label</span> Value</li>
+          <li><span>Label</span> Value</li>
+          <li><span>Status</span> Value</li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="/motormaxxing/">Read full documentation</a>
+          <button class="btn" type="button" data-close>Close</button>
+        </div>
+      </div>
+
+    </div>
+  </dialog>
+
+<!-- ====================end dyno1 preview==================== -->
+
+
+    <script> //end of previews
+
     // Open previews
     document.querySelectorAll('[data-preview]').forEach(card => {
       card.addEventListener('click', () => {
