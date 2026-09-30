@@ -150,7 +150,8 @@
       scrollbar-width: none;
     }
     .gallery-track::-webkit-scrollbar { display: none; }
-    .gallery-track img {
+    .gallery-track > * {
+      border: 0;
       flex: 0 0 100%;
       width: 100%;
       height: 100%;
@@ -232,22 +233,24 @@
   <div class="wrap">
 
     <header>
-      <div class="header-grid">  <!-- NEW -->
-        <div>                    <!-- NEW -->
+      <div class="header-grid">  
+        <div>                    
           <h1>Hugo F.</h1>
           <p class="role">Actuator Hardware Enjoyer</p>
           <p class="intro">
             I enjoy building spinning things. Current favorite projects are the custom BLDC motor, custom driver, and quasi-direct-drive drivetrain for robotic actuation.
+            <br>
+            I also work on human actuators. If you'd like to learn handbalancing, calisthenics, and physical rehab, find me @yvguo on YouTube.
           </p>
           <ul class="links">
             <li><a href="https://github.com/qyugo">GitHub - @qyugo </a></li>
             <li><a href="mailto:ukahan251@gmail.com">ukahan251@gmail.com</a></li>
           </ul>
-        </div>                   <!-- NEW -->
-        <div class="model">      <!-- NEW -->
+        </div>                   
+        <div class="model">      
           <canvas id="model" role="img" aria-label="3D model of a custom BLDC motor"></canvas>
-        </div>                   <!-- NEW -->
-      </div>                     <!-- NEW -->
+        </div>                   
+      </div>                     
     </header>
 
     <main>
@@ -326,6 +329,19 @@
 
 <!-- ======================================== -->
 
+<!-- ===== CARD: Soft Actuator Hand ===== -->
+        <button class="card" type="button" data-preview="preview-hand">
+          <div class="thumb">
+            <img src="https://github.com/user-attachments/assets/1478002a-7a24-42fd-ade5-c78b697d82b4" alt="hand" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h3>Biomimetic Soft Actuated Hand</h3>
+            <p> Concept design of musculoskeletal hand bones powered by air for compliant, lifelike actuation using McKibben actuators.</p>
+          </div>
+        </button>
+
+<!-- ======================================== -->
+
 <!-- cards end -->
 
 
@@ -351,8 +367,8 @@
       <div class="gallery">
         <div class="gallery-track">
           <img src="https://github.com/user-attachments/assets/5b07d36f-3da9-4ea6-a4c7-dd8945dfa303" alt="Custom BLDC motor driver board">
-          <img src="IMAGE_2_LINK" alt="Describe image 2" loading="lazy">
-          <img src="IMAGE_3_LINK" alt="Describe image 3" loading="lazy">
+          <img src="https://github.com/user-attachments/assets/94356e5a-d1d8-4541-9c04-5c2432c5c798" alt="yvgescback" loading="lazy">
+          <img src="https://github.com/user-attachments/assets/17e2f781-bda7-4861-8c69-8794a9f4fdbe" alt="yvgesc kicad" loading="lazy">
         </div>
         <button class="gallery-btn gallery-prev" type="button" aria-label="Previous image">&#8249;</button>
         <button class="gallery-btn gallery-next" type="button" aria-label="Next image">&#8250;</button>
@@ -391,13 +407,14 @@
         </p>
 
         <ul class="specs">
-          <li><span>Max Bus Voltage/Continuous/Peak Current/</span> 50V/30A/52A</li>
+          <li><span>PCB Properties</span> 4-Layer, 64x74mm, ENIG</li>
+          <li><span>Max Bus Voltage/Continuous/Peak Current</span> 50V/30A/52A</li>
           <li><span>Gate Driver/MCU</span> DRV8323H/STM32G431RBT6</li>
           <li><span>Flashing</span> ST-Link SWD, USB</li>
           <li><span>Communications</span> CAN, USB to SLCAN</li>
           <li><span>Regen</span> Firmware-controlled Motor Coil Dissipation</li>
           <li><span>Encoder</span> AS5047P Absolute Magnetic</li>
-          <li><span>Status</span> Manufactured, writing firmware</li>
+          <li><span>Status</span> Manufactured, currently writing firmware</li>
         </ul>
 
         <div class="actions">
@@ -420,7 +437,7 @@
         <div class="gallery">
           <div class="gallery-track">
             <img src="https://github.com/user-attachments/assets/cc1f39d2-67db-48ea-b813-7513684aa1c0" alt="some build pics">
-            <img src="IMAGE_2_LINK" alt="Describe image 2" loading="lazy">
+            <video src="https://github.com/user-attachments/assets/0fe9e435-dbfa-477a-8bea-4a25dcb76d4b" autoplay loop muted playsinline preload="metadata"></video>
           </div>
           <button class="gallery-btn gallery-prev" type="button" aria-label="Previous image">&#8249;</button>
           <button class="gallery-btn gallery-next" type="button" aria-label="Next image">&#8250;</button>
@@ -624,6 +641,62 @@
 
 <!-- ====================end dyno1 preview==================== -->
 
+  <!-- ======================================== -->
+<!-- ===== Hand Preview ===== -->
+  <dialog id="preview-hand" aria-labelledby="preview-hand">
+    <div class="preview">
+
+      <div>
+        <div class="gallery">
+          <div class="gallery-track">
+            <video src="https://github.com/user-attachments/assets/2843a26b-b9ff-487c-ac3d-21256a61831c" autoplay loop muted playsinline preload="metadata"></video>
+            <img src="https://github.com/user-attachments/assets/0524d9cc-f0b4-4151-a454-22c1b92753dc" alt="handcad" loading="lazy">
+            <img src="https://github.com/user-attachments/assets/6c52b925-eda5-43a0-9bbf-006200f8da5c" alt="handlabeled">
+        
+            
+          </div>
+          <button class="gallery-btn gallery-prev" type="button" aria-label="Previous image">&#8249;</button>
+          <button class="gallery-btn gallery-next" type="button" aria-label="Next image">&#8250;</button>
+          <span class="gallery-count"></span>
+        </div>
+
+        <div class="skills">
+          <h4>Skills used</h4>
+          <ul>
+            <li>Test Fixtures</li>
+            <li>Generators</li>
+            <li>Power Resistors</li>
+            <li>Current Sensing</li>
+            <li>Data Collection</li>
+            <li>Performance/Efficiency Characterization</li>
+            <li>Three-Phase Rectifiers</li>
+          </ul>
+        </div>
+      </div>
+
+<div class="preview-body">
+        <h3 id="preview-hand">Pneumatic Soft-Actuated Hand</h3>
+
+        <p>
+          This is my air-powered McKibben soft robotic hand designed to mimic hand bones, up to 12 hand muscles, and tendon systems found in the actual hand.<br><br> It features a self-topping compressor-accumulator tank controlled via N-Ch MOSFET + 12V Bosch automotive relay + 12V pressure transducer for hysteresis control via a cheap ESP32 board, using C++/PlatformIO.<br><br> At the time, I was dealing with some deep hand injuries from handbalancing training, so it was a good visualizer for my self-rehab.
+        </p>
+
+        <ul class="specs">
+          <li><span>Label</span> Value</li>
+          <li><span>Status</span> Value</li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="https://github.com/qyugo/pneumatic-actuator-hand">Read full documentation</a>
+          <button class="btn" type="button" data-close>Close</button>
+        </div>
+      </div>
+
+    </div>
+  </dialog>
+
+<!-- ====================end HAND preview==================== -->
+
 
     <script> //end of previews
 
@@ -644,12 +717,21 @@
     });
 
         // Image galleries
+        // Image galleries
     document.querySelectorAll('.gallery').forEach(gallery => {
       const track = gallery.querySelector('.gallery-track');
       const total = track.children.length;
       const prev = gallery.querySelector('.gallery-prev');
       const next = gallery.querySelector('.gallery-next');
       const count = gallery.querySelector('.gallery-count');
+      const dialog = gallery.closest('dialog');
+
+      const stopMedia = () => {
+        track.querySelectorAll('video:not([loop])').forEach(v => v.pause());
+        track.querySelectorAll('iframe').forEach(f =>
+          f.contentWindow?.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*'));
+      };
+      dialog.addEventListener('close', stopMedia);
 
       if (total < 2) {
         prev.hidden = next.hidden = count.hidden = true;
@@ -657,7 +739,12 @@
       }
 
       const current = () => Math.round(track.scrollLeft / (track.clientWidth || 1));
-      const update = () => { count.textContent = `${current() + 1} / ${total}`; };
+      let last = 0;
+      const update = () => {
+        const i = current();
+        count.textContent = `${i + 1} / ${total}`;
+        if (i !== last) { stopMedia(); last = i; }
+      };
       const go = step => {
         const i = (current() + step + total) % total;
         track.scrollTo({ left: i * track.clientWidth });
@@ -666,7 +753,7 @@
       prev.addEventListener('click', () => go(-1));
       next.addEventListener('click', () => go(1));
       track.addEventListener('scroll', update, { passive: true });
-      gallery.closest('dialog').addEventListener('keydown', e => {
+      dialog.addEventListener('keydown', e => {
         if (e.key === 'ArrowLeft') go(-1);
         if (e.key === 'ArrowRight') go(1);
       });
