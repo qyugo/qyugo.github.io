@@ -245,7 +245,7 @@
     });
   </script>
 
-  <!-- ===== NEW: 3D MODEL (loads assets/motormodel.stl) ===== -->
+  <!-- New driver and motor model -->
   <script type="importmap">
     {
       "imports": {
@@ -257,12 +257,16 @@
   <script type="module">
     import * as THREE from 'three';
     import { STLLoader } from 'three/addons/loaders/STLLoader.js';
+    import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
     // STL Settings
-    const MODEL_PATH = 'assets/motorwithdriver.stl';
-    const MODEL_COLOR = 0x9a9c9f;          // grey metal
-    const TILT_X = 0;           //
-    const SPIN_SPEED = 0.4;                // rad/s
+    const MODEL_PATH = 'assets/motormodel.stl';
+    const MODEL_COLOR = 0xc8c8c8;          // light grey
+    const METALNESS = 0.9;
+    const ROUGHNESS = 0.25;
+    const REFLECTION_STRENGTH = 1.0;
+    const TILT_X = 0;
+    const SPIN_SPEED = 0.4;
     // -----------------------------------
 
     const canvas = document.getElementById('model');
@@ -274,11 +278,19 @@
     camera.position.set(0, 0.8, 3.3);
     camera.lookAt(0, 0, 0);
 
-    scene.add(new THREE.HemisphereLight(0xffffff, 0x303030, 1.2));
-    const key = new THREE.DirectionalLight(0xffffff, 2);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.1;
+
+    // Reflection environment
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+    scene.environmentIntensity = REFLECTION_STRENGTH;
+
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x000000, 0.3));
+    const key = new THREE.DirectionalLight(0xffffff, 3);
     key.position.set(3, 4, 5);
     scene.add(key);
-    const rim = new THREE.DirectionalLight(0xf2d44e, 0.8);
+    const rim = new THREE.DirectionalLight(0xf2d44e, 1.2);
     rim.position.set(-4, 2, -3);
     scene.add(rim);
 
@@ -288,10 +300,13 @@
     new STLLoader().load(MODEL_PATH, geometry => {
       geometry.center();
       geometry.computeBoundingSphere();
-      const mesh = new THREE.Mesh(
-        geometry,
-        new THREE.MeshStandardMaterial({ color: MODEL_COLOR, metalness: 0.4, roughness: 0.45 })
-      );
+      const mesh = new THREE.MeshPhysicalMaterial({
+      color: MODEL_COLOR,
+      metalness: METALNESS,
+      roughness: ROUGHNESS,
+      clearcoat: 0.5,            
+      clearcoatRoughness: 0.1
+})
       mesh.scale.setScalar(1 / geometry.boundingSphere.radius); 
       mesh.rotation.x = TILT_X;
       pivot.add(mesh);
