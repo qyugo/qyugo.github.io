@@ -39,6 +39,9 @@ https://github.com/user-attachments/assets/2843a26b-b9ff-487c-ac3d-21256a61831c
 
 <img width="1179" height="1331" alt="IMG_3980" src="https://github.com/user-attachments/assets/1478002a-7a24-42fd-ade5-c78b697d82b4" />
 
+<img width="1179" height="1113" alt="IMG_3980 2" src="https://github.com/user-attachments/assets/00649509-dfd4-4ae2-955f-7249a7a8d82f" />
+
+
 <img width="708" height="448" alt="Screenshot 2026-09-30 at 2 25 06 PM" src="https://github.com/user-attachments/assets/0524d9cc-f0b4-4151-a454-22c1b92753dc" />
 
 
