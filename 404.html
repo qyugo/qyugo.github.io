@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ooops!! Go back.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #111214;
+      --line: #2c2e32;
+      --text: #e8e8e6;
+      --muted: #9a9c9f;
+      --accent: #f2d44e;
+      --font: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+
+    main { padding: 4.5rem 0 3rem; border-bottom: 1px solid var(--line); }
+    .code { color: var(--muted); font-weight: 500; margin: 0 0 0.35rem; }
+    h1 { font-size: 2rem; font-weight: 600; line-height: 1.2; margin: 0 0 1rem; }
+    p { max-width: 60ch; margin: 0 0 1.75rem; }
+
+    .btn {
+      display: inline-block;
+      padding: 0.65rem 1.1rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border-radius: 4px;
+      background: var(--accent);
+      color: #111214;
+    }
+    .btn:hover { background: #e6c63c; }
+    .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    footer { padding: 2rem 0 3rem; color: var(--muted); font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <main>
+      <p class="code">404</p>
+      <h1>Page not found</h1>
+      <p>This page doesn't exist or has moved.</p>
+      <a class="btn" href="/">Back to homepage</a>
+    </main>
+    <footer>Hugo D.F.</footer>
+  </div>
+</body>
+</html>
