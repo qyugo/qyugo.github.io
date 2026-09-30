@@ -25,6 +25,18 @@ Analytical UI:
 <img src="https://github.com/user-attachments/assets/69fad598-e3eb-4b53-9369-b6179df2c60d" width="50"/>
 
 
+
+Appendix https://github.com/user-attachments/assets/c6a79a2e-3400-44e5-bb71-41fced2f96da
+
+
+
+UI Demo https://github.com/user-attachments/assets/5cc1751d-c645-442b-ad9b-8480f01e64ac
+
+
+
+
+
+
 CS144 Dyno:
 
 <img src="https://github.com/user-attachments/assets/9a5b7751-874c-4624-9a4d-70dd3715310b" width="50%" />
@@ -38,6 +50,9 @@ Hand
 https://github.com/user-attachments/assets/2843a26b-b9ff-487c-ac3d-21256a61831c
 
 <img width="1179" height="1331" alt="IMG_3980" src="https://github.com/user-attachments/assets/1478002a-7a24-42fd-ade5-c78b697d82b4" />
+
+<img width="1179" height="1113" alt="IMG_3980 2" src="https://github.com/user-attachments/assets/00649509-dfd4-4ae2-955f-7249a7a8d82f" />
+
 
 <img width="708" height="448" alt="Screenshot 2026-09-30 at 2 25 06 PM" src="https://github.com/user-attachments/assets/0524d9cc-f0b4-4151-a454-22c1b92753dc" />
 
