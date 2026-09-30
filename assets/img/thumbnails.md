@@ -33,3 +33,11 @@ QDD:
 
 <img src="https://github.com/user-attachments/assets/67c1045a-c6aa-4b54-b15d-29fd0774b6e4" width="50%" />
 
+
+Hand
+https://github.com/user-attachments/assets/2843a26b-b9ff-487c-ac3d-21256a61831c
+
+<img width="1179" height="1331" alt="IMG_3980" src="https://github.com/user-attachments/assets/1478002a-7a24-42fd-ade5-c78b697d82b4" />
+
+
+
