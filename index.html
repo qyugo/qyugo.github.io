@@ -295,6 +295,7 @@
     scene.add(rim);
 
     const pivot = new THREE.Group();
+    pivot.rotation.y = Math.PI;
     scene.add(pivot);
 
     new STLLoader().load(MODEL_PATH, geometry => {
