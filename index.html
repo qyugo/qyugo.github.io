@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hugo F. — github.com/qyugo</title>
+  <meta name="description" content="Actuator Hardware Enjoyer.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #111214;
+      --surface: #1a1b1e;
+      --line: #2c2e32;
+      --text: #e8e8e6;
+      --muted: #9a9c9f;
+      --accent: #f2d44e;
+      --font: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    img { display: block; max-width: 100%; }
+
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ---------- Header ---------- */
+
+    header { padding: 4.5rem 0 3rem; border-bottom: 1px solid var(--line); }
+    header h1 { font-size: 2rem; font-weight: 600; line-height: 1.2; margin: 0 0 0.35rem; }
+    .role { color: var(--muted); font-size: 1.1rem; margin: 0 0 1.5rem; }
+    .intro { max-width: 60ch; margin: 0 0 1.75rem; }
+
+    .links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 0; padding: 0; list-style: none; }
+    .links a { text-decoration: none; color: var(--muted); font-weight: 500; }
+    .links a:hover { color: var(--accent); }
+
+    /* ---------- Projects ---------- */
+
+    main { padding: 3rem 0 4rem; }
+    main h2 { font-size: 1.1rem; font-weight: 600; margin: 0 0 1.25rem; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 0;
+      text-align: left;
+      font: inherit;
+      color: inherit;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .card:hover { border-color: var(--muted); }
+
+    .thumb { aspect-ratio: 16 / 10; background: #222428; }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+    .card-body { padding: 1rem 1.1rem 1.2rem; }
+    .card h3 { font-size: 1.05rem; font-weight: 600; margin: 0 0 0.35rem; }
+    .card p { color: var(--muted); font-size: 0.93rem; margin: 0; }
+
+    /* ---------- Preview dialog ---------- */
+
+    dialog {
+      width: min(640px, calc(100% - 2rem));
+      max-height: calc(100% - 2rem);
+      padding: 0;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    dialog::backdrop { background: rgba(0, 0, 0, 0.7); }
+
+    .preview-img { aspect-ratio: 16 / 9; background: #222428; }
+    .preview-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    .preview-body { padding: 1.5rem 1.5rem 1.75rem; }
+    .preview-body h3 { font-size: 1.4rem; font-weight: 600; margin: 0 0 0.75rem; }
+    .preview-body p { margin: 0 0 1rem; }
+
+    .specs { margin: 1.25rem 0 1.5rem; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+    .specs li {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.93rem;
+    }
+    .specs span { color: var(--muted); }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .btn {
+      display: inline-block;
+      padding: 0.65rem 1.1rem;
+      font: inherit;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+    }
+    .btn:hover { border-color: var(--muted); }
+    .btn-primary { background: var(--accent); border-color: var(--accent); color: #111214; }
+    .btn-primary:hover { background: #e6c63c; border-color: #e6c63c; }
+
+    footer { padding: 2rem 0 3rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+
+    <header>
+      <h1>Hugo F.</h1>
+      <p class="role">Actuator Hardware</p>
+      <p class="intro">
+        I enjoy building spinning things. Current favorite projects are the custom BLDC motor, custom driver, and quasi-direct-drive drivetrain for robotic actuation.
+      </p>
+      <ul class="links">
+        <li><a href="https://github.com/qyugo">GitHub</a></li>
+        <li><a href="mailto:ukahan251@gmail.com">ukahan251@gmail.com</a></li>
+      </ul>
+    </header>
+
+    <main>
+      <h2>Projects</h2>
+
+      <div class="grid">
+
+        <!-- ===== CARD: YVGESC ===== -->
+        <button class="card" type="button" data-preview="preview-yvgesc">
+          <div class="thumb">
+            <img src="https://github.com/user-attachments/assets/5b07d36f-3da9-4ea6-a4c7-dd8945dfa303" alt="Custom FOC Controller" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h3>YVGESC-1</h3>
+            <p>Custom FOC controller for servo control of Brushless DC motors.</p>
+          </div>
+        </button>
+
+
+      </div>
+    </main>
+
+    <footer>
+      Hugo D.F.
+    </footer>
+
+  </div>
+
+  <!-- ===== YVGESC Preview ===== -->
+  <dialog id="preview-yvgesc" aria-labelledby="preview-bldc-title">
+    <div class="preview-img">
+      <img src="https://github.com/user-attachments/assets/5b07d36f-3da9-4ea6-a4c7-dd8945dfa303" alt="Custom BLDC motor driver board">
+    </div>
+    <div class="preview-body">
+      <h3 id="preview-bldc-title">BLDC motor driver</h3>
+
+      <p>
+        Designed in KiCad for driving my custom motors and drivetrains. Check out the full documentations page below for instructions, design process, schematics, and actual details.
+      </p>
+
+      <ul class="specs">
+        <li><span>Max Bus Voltage</span> 50V</li>
+        <li><span>Continuous/Peak Current</span> 30A/52A </li>
+        <li><span>Gate driver</span> DRV8323H</li>
+        <li><span>MCU</span> STM32G431RBT6</li>
+        <li><span>Flashing</span> ST-Link SWD, USB</li>
+        <li><span>Comms</span> CAN-JST-PH-3, USB to SLCAN</li>
+        <li><span>Control</span> Field-oriented control</li>
+        <li><span>Encoder</span> AS5047P Absolute Magnetic</li>
+        <li><span>Status</span> Manufactured, writing firmware</li>
+      </ul>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="/YVGESC/">Read full documentation</a>
+        <button class="btn" type="button" data-close>Close</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    // Open previews
+    document.querySelectorAll('[data-preview]').forEach(card => {
+      card.addEventListener('click', () => {
+        document.getElementById(card.dataset.preview).showModal();
+      });
+    });
+
+    document.querySelectorAll('dialog').forEach(dialog => {
+      // Close button
+      dialog.querySelector('[data-close]').addEventListener('click', () => dialog.close());
+      // Click outside the box closes it
+      dialog.addEventListener('click', e => {
+        if (e.target === dialog) dialog.close();
+      });
+    });
+  </script>
+
+</body>
+</html>
