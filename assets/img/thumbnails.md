@@ -1,12 +1,24 @@
 ## Thumbnails - Ignore
 
-Assembled YVGESC:
+YVGESC:
 
 <img src="https://github.com/user-attachments/assets/5b07d36f-3da9-4ea6-a4c7-dd8945dfa303" width="50%" />
+
+<img src="https://github.com/user-attachments/assets/17e2f781-bda7-4861-8c69-8794a9f4fdbe" width="50%"/>
+
+<img src="https://github.com/user-attachments/assets/94356e5a-d1d8-4541-9c04-5c2432c5c798" width="50%"/>
+
+
 
 Some assembled motors:
 
 <img  src="https://github.com/user-attachments/assets/cc1f39d2-67db-48ea-b813-7513684aa1c0" width = "50%" />
+
+
+
+https://github.com/user-attachments/assets/0fe9e435-dbfa-477a-8bea-4a25dcb76d4b
+
+
 
 Analytical UI:
 
