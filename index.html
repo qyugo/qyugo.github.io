@@ -300,14 +300,15 @@
     new STLLoader().load(MODEL_PATH, geometry => {
       geometry.center();
       geometry.computeBoundingSphere();
-      const mesh = new THREE.MeshPhysicalMaterial({
-      color: MODEL_COLOR,
-      metalness: METALNESS,
-      roughness: ROUGHNESS,
-      clearcoat: 0.5,            
-      clearcoatRoughness: 0.1
-})
-      mesh.scale.setScalar(1 / geometry.boundingSphere.radius); 
+      const mesh = new THREE.Mesh(geometry, new THREE.MeshPhysicalMaterial({
+          color: MODEL_COLOR,
+          metalness: METALNESS,
+          roughness: ROUGHNESS,
+          clearcoat: 0.5,
+          clearcoatRoughness: 0.1
+        })
+      );
+      mesh.scale.setScalar(1 / geometry.boundingSphere.radius);
       mesh.rotation.x = TILT_X;
       pivot.add(mesh);
     });
