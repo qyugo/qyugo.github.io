@@ -48,11 +48,36 @@
       .header-grid { grid-template-columns: 1.3fr 1fr; }
     }
 
-    .model { width: 100%; max-width: 360px; aspect-ratio: 1; justify-self: center; }
+    .model {
+      --glow: #b3261e;
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 1;
+      justify-self: center;
+    }
     @media (max-width: 759px) {
       .model { max-width: 260px; }
     }
-    .model canvas { display: block; width: 100%; height: 100%; }
+    .model::before {
+      content: "";
+      position: absolute;
+      inset: 12%;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+      filter: blur(30px);
+      opacity: 0.55;
+      pointer-events: none;
+      animation: glow-pulse 6s ease-in-out infinite;
+    }
+    @keyframes glow-pulse {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50%      { opacity: 0.7; transform: scale(1.06); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .model::before { animation: none; }
+    }
+    .model canvas { position: relative; z-index: 1; display: block; width: 100%; height: 100%; }
     /* End STL block */
 
     header h1 { font-size: 2rem; font-weight: 600; line-height: 1.2; margin: 0 0 0.35rem; }
@@ -99,9 +124,9 @@
 
     /* ---------- Preview dialog ---------- */
 
-    dialog {
-      width: min(640px, calc(100% - 2rem));
-      max-height: calc(100% - 2rem);
+        dialog {
+      width: min(1040px, calc(100% - 2rem));
+      max-height: calc(100vh - 2rem);
       padding: 0;
       color: var(--text);
       background: var(--surface);
@@ -110,10 +135,63 @@
     }
     dialog::backdrop { background: rgba(0, 0, 0, 0.7); }
 
-    .preview-img { aspect-ratio: 16 / 9; background: #222428; }
-    .preview-img img { width: 100%; height: 100%; object-fit: cover; }
+    .preview { display: grid; grid-template-columns: 1fr; }
+    @media (min-width: 800px) {
+      .preview { grid-template-columns: 1.3fr 1fr; }
+    }
 
-    .preview-body { padding: 1.5rem 1.5rem 1.75rem; }
+    .gallery { position: relative; aspect-ratio: 4 / 3; align-self: start; background: #0c0d0e; }
+    .gallery-track {
+      display: flex;
+      height: 100%;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+    }
+    .gallery-track::-webkit-scrollbar { display: none; }
+    .gallery-track img {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      scroll-snap-align: start;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .gallery-track { scroll-behavior: auto; }
+    }
+    .gallery-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: rgba(17, 18, 20, 0.75);
+      color: var(--text);
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+    .gallery-btn:hover { border-color: var(--muted); }
+    .gallery-prev { left: 0.75rem; }
+    .gallery-next { right: 0.75rem; }
+    .gallery-count {
+      position: absolute;
+      right: 0.75rem;
+      bottom: 0.75rem;
+      padding: 0.1rem 0.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: rgba(17, 18, 20, 0.75);
+      border-radius: 3px;
+    }
+    .skills { padding: 1rem 1.5rem 1.5rem; }
+    .skills h4 { font-size: 0.85rem; font-weight: 600; color: var(--muted); margin: 0 0 0.6rem; }
+    .skills ul { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; padding: 0; list-style: none; }
+    .skills li { font-size: 0.85rem; padding: 0.2rem 0.6rem; border: 1px solid var(--line); border-radius: 3px; }
+
+    .preview-body { padding: 1.5rem 1.5rem 1.75rem; overflow-y: auto; }
     .preview-body h3 { font-size: 1.4rem; font-weight: 600; margin: 0 0 0.75rem; }
     .preview-body p { margin: 0 0 1rem; }
 
@@ -157,7 +235,7 @@
       <div class="header-grid">  <!-- NEW -->
         <div>                    <!-- NEW -->
           <h1>Hugo F.</h1>
-          <p class="role">Actuator Hardware</p>
+          <p class="role">Actuator Hardware Enjoyer</p>
           <p class="intro">
             I enjoy building spinning things. Current favorite projects are the custom BLDC motor, custom driver, and quasi-direct-drive drivetrain for robotic actuation.
           </p>
@@ -199,31 +277,69 @@
   </div>
 
   <!-- ===== YVGESC Preview ===== -->
+    <!-- ===== YVGESC Preview ===== -->
   <dialog id="preview-yvgesc" aria-labelledby="preview-bldc-title">
-    <div class="preview-img">
-      <img src="https://github.com/user-attachments/assets/5b07d36f-3da9-4ea6-a4c7-dd8945dfa303" alt="Custom BLDC motor driver board">
-    </div>
-    <div class="preview-body">
-      <h3 id="preview-bldc-title">YVGESC1 - Custom BLDC Driver</h3>
+    <div class="preview">
 
-      <p>
-        Designed in KiCad and fabricated with JLCPCB for driving my custom motors and drivetrains. Check out the full documentations page below for instructions, design process, schematics, and actual details.
-      </p>
-
-      <ul class="specs">
-        <li><span>Max Bus Voltage/Continuous/Peak Current/</span> 50V/30A/52A</li>
-        <li><span>Gate Driver/MCU</span> DRV8323H/STM32G431RBT6</li>
-        <li><span>Flashing</span> ST-Link SWD, USB</li>
-        <li><span>Communications</span> CAN, USB to SLCAN</li>
-        <li><span>Regen</span> Firmware-controlled Motor Coil Dissipation</li>
-        <li><span>Encoder</span> AS5047P Absolute Magnetic</li>
-        <li><span>Status</span> Manufactured, writing firmware</li>
-      </ul>
-
-      <div class="actions">
-        <a class="btn btn-primary" href="/YVGESC/">Read full documentation</a>
-        <button class="btn" type="button" data-close>Close</button>
+      <div>
+      <div class="gallery">
+        <div class="gallery-track">
+          <img src="https://github.com/user-attachments/assets/5b07d36f-3da9-4ea6-a4c7-dd8945dfa303" alt="Custom BLDC motor driver board">
+          <img src="IMAGE_2_LINK" alt="Describe image 2" loading="lazy">
+          <img src="IMAGE_3_LINK" alt="Describe image 3" loading="lazy">
+        </div>
+        <button class="gallery-btn gallery-prev" type="button" aria-label="Previous image">&#8249;</button>
+        <button class="gallery-btn gallery-next" type="button" aria-label="Next image">&#8250;</button>
+        <span class="gallery-count"></span>
       </div>
+
+      <div class="skills">                  <!-- new -->
+          <h4>Skills used</h4>
+          <ul>
+            <li>Power Electronics</li>
+            <li>KiCad</li>
+            <li>PCB Design</li>
+            <li>STM32</li>
+            <li>Embedded C</li>
+            <li>Field Oriented Control</li>
+            <li>Controller Area Network (CAN)</li>
+            <li>Gate Drivers</li>
+            <li>Design for Manufacturing</li>
+            <li>MOSFET Inverters</li>
+            <li>DC-Link Capacitance Design</li>
+            <li>USB Design</li>
+            <li>Magnetic Encoders</li>
+            <li>Return Paths</li>
+            <li>Cascaded PI Control</li>
+            
+          </ul>
+        </div>                                <!-- new -->
+      </div>      
+
+      <div class="preview-body">
+        <h3 id="preview-bldc-title">YVGESC1 - Custom BLDC Driver</h3>
+
+        <p>
+          Designed in KiCad and fabricated with JLCPCB for driving my custom motors and drivetrains. Check out the full documentations page below for instructions, design process, schematics, and actual details.
+          Features USB flashing, as well as a USB to CAN pipeline, and a heat dissipation algorithm without a brake resistor.
+        </p>
+
+        <ul class="specs">
+          <li><span>Max Bus Voltage/Continuous/Peak Current/</span> 50V/30A/52A</li>
+          <li><span>Gate Driver/MCU</span> DRV8323H/STM32G431RBT6</li>
+          <li><span>Flashing</span> ST-Link SWD, USB</li>
+          <li><span>Communications</span> CAN, USB to SLCAN</li>
+          <li><span>Regen</span> Firmware-controlled Motor Coil Dissipation</li>
+          <li><span>Encoder</span> AS5047P Absolute Magnetic</li>
+          <li><span>Status</span> Manufactured, writing firmware</li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="/YVGESC/">Read full documentation</a>
+          <button class="btn" type="button" data-close>Close</button>
+        </div>
+      </div>
+
     </div>
   </dialog>
 
@@ -243,6 +359,36 @@
         if (e.target === dialog) dialog.close();
       });
     });
+
+        // Image galleries
+    document.querySelectorAll('.gallery').forEach(gallery => {
+      const track = gallery.querySelector('.gallery-track');
+      const total = track.children.length;
+      const prev = gallery.querySelector('.gallery-prev');
+      const next = gallery.querySelector('.gallery-next');
+      const count = gallery.querySelector('.gallery-count');
+
+      if (total < 2) {
+        prev.hidden = next.hidden = count.hidden = true;
+        return;
+      }
+
+      const current = () => Math.round(track.scrollLeft / (track.clientWidth || 1));
+      const update = () => { count.textContent = `${current() + 1} / ${total}`; };
+      const go = step => {
+        const i = (current() + step + total) % total;
+        track.scrollTo({ left: i * track.clientWidth });
+      };
+
+      prev.addEventListener('click', () => go(-1));
+      next.addEventListener('click', () => go(1));
+      track.addEventListener('scroll', update, { passive: true });
+      gallery.closest('dialog').addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft') go(-1);
+        if (e.key === 'ArrowRight') go(1);
+      });
+      update();
+    });
   </script>
 
   <!-- New driver and motor model -->
@@ -261,12 +407,14 @@
 
     // STL Settings
     const MODEL_PATH = 'assets/motorwithdriver.stl';
-    const MODEL_COLOR = 0x4a4c4f;          // light grey
-    const METALNESS = 0.6;
-    const ROUGHNESS = 0.4;
-    const REFLECTION_STRENGTH = 0.7;
+    const MODEL_COLOR = 0x2e3033;
+    const METALNESS = 0.9;
+    const ROUGHNESS = 0.3;
+    const REFLECTION_STRENGTH = 1.0;
+    const TILT_AMOUNT = 0.2;   
+    const TILT_SPEED = 0.5;
     const TILT_X = 0;
-    const SPIN_SPEED = 0.4;
+    const SPIN_SPEED = 0.5;
     // -----------------------------------
 
     const canvas = document.getElementById('model');
@@ -281,6 +429,9 @@
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.1;
 
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
     // Reflection environment
     const pmrem = new THREE.PMREMGenerator(renderer);
     scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
@@ -289,8 +440,16 @@
     scene.add(new THREE.HemisphereLight(0xffffff, 0x000000, 0.3));
     const key = new THREE.DirectionalLight(0xffffff, 3);
     key.position.set(1.5, 6, 2);
+    key.castShadow = true;
+    key.shadow.mapSize.set(2048, 2048);
+    key.shadow.camera.left = -1.2;
+    key.shadow.camera.right = 1.2;
+    key.shadow.camera.top = 1.2;
+    key.shadow.camera.bottom = -1.2;
+    key.shadow.bias = -0.0005;
+    key.shadow.normalBias = 0.02;
     scene.add(key);
-    const rim = new THREE.DirectionalLight(0xf2d44e, 1.2);
+    const rim = new THREE.DirectionalLight(0xb3261e, 1.5);
     rim.position.set(-4, 2, -3);
     scene.add(rim);
 
@@ -306,11 +465,13 @@
           metalness: METALNESS,
           roughness: ROUGHNESS,
           clearcoat: 0.5,
-          clearcoatRoughness: 0.1
+          clearcoatRoughness: 0.8
         })
       );
       mesh.scale.setScalar(0.7 / geometry.boundingSphere.radius);
       mesh.rotation.x = TILT_X;
+      mesh.castShadow = true;
+      mesh.receiveShadow = true;
       pivot.add(mesh);
     });
 
@@ -324,8 +485,14 @@
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const clock = new THREE.Clock();
+    let t = 0;
     renderer.setAnimationLoop(() => {
-      if (!reduceMotion) pivot.rotation.y += SPIN_SPEED * clock.getDelta();
+      const dt = clock.getDelta();
+      if (!reduceMotion) {
+        t += dt;
+        pivot.rotation.y += SPIN_SPEED * dt;
+        pivot.rotation.x = TILT_AMOUNT * Math.sin(t * TILT_SPEED);
+      }
       renderer.render(scene, camera);
     });
   </script>
