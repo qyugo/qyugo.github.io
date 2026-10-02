@@ -2,7 +2,10 @@
 
 YVGESC:
 
-<img src="https://github.com/user-attachments/assets/5b07d36f-3da9-4ea6-a4c7-dd8945dfa303" width="50%" />
+
+
+<img width="1280" height="1095" alt="yvgesc368kb" src="https://github.com/user-attachments/assets/0a573223-623f-4b98-8a62-b545eca9694f" />
+
 
 <img src="https://github.com/user-attachments/assets/17e2f781-bda7-4861-8c69-8794a9f4fdbe" width="50%"/>
 
@@ -24,7 +27,8 @@ https://github.com/user-attachments/assets/0fe9e435-dbfa-477a-8bea-4a25dcb76d4b
 
 Analytical UI:
 
-<img src="https://github.com/user-attachments/assets/69fad598-e3eb-4b53-9369-b6179df2c60d" width="50"/>
+
+<img width="1280" height="830" alt="analyticalscreenshot211kb" src="https://github.com/user-attachments/assets/a5b16444-08aa-4467-a619-5d8011f5cfe7" />
 
 
 
@@ -44,6 +48,8 @@ CS144 Dyno:
 <img width="1280" height="960" alt="dyno361kb" src="https://github.com/user-attachments/assets/4be18112-a142-4118-a1e1-e22dc8d58fe3" />
 
 <img width="1280" height="960" alt="dynolabels356kb" src="https://github.com/user-attachments/assets/5c16d873-91ee-44af-981e-26dbd87bed38" />
+
+<img width="2016" height="1177" alt="IMG_3735" src="https://github.com/user-attachments/assets/0c5450ea-401b-4a51-ab1f-7ca22592af63" />
 
 
 
