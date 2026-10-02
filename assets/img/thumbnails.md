@@ -12,7 +12,9 @@ YVGESC:
 
 Some assembled motors:
 
-<img  src="https://github.com/user-attachments/assets/cc1f39d2-67db-48ea-b813-7513684aa1c0" width = "50%" />
+
+<img width="1280" height="960" alt="motors330kb" src="https://github.com/user-attachments/assets/2d23d5fa-eef8-4dec-a6e5-b3c2493a7931" />
+
 
 
 
@@ -39,7 +41,14 @@ UI Demo https://github.com/user-attachments/assets/5cc1751d-c645-442b-ad9b-8480f
 
 CS144 Dyno:
 
-<img src="https://github.com/user-attachments/assets/9a5b7751-874c-4624-9a4d-70dd3715310b" width="50%" />
+<img width="1280" height="960" alt="dyno361kb" src="https://github.com/user-attachments/assets/4be18112-a142-4118-a1e1-e22dc8d58fe3" />
+
+<img width="1280" height="960" alt="dynolabels356kb" src="https://github.com/user-attachments/assets/5c16d873-91ee-44af-981e-26dbd87bed38" />
+
+
+
+<img width="1206" height="874" alt="IMG_3888" src="https://github.com/user-attachments/assets/09b6509e-2299-49e5-b390-e5f597f695e1" />
+
 
 QDD:
 
