@@ -72,6 +72,38 @@ https://github.com/user-attachments/assets/2843a26b-b9ff-487c-ac3d-21256a61831c
 <img width="708" height="448" alt="Screenshot 2026-09-30 at 2 25 06 PM" src="https://github.com/user-attachments/assets/0524d9cc-f0b4-4151-a454-22c1b92753dc" />
 
 
+OWC
+<img width="1280" height="716" alt="Screenshot 2026-10-11 at 6 38 27 PM Large" src="https://github.com/user-attachments/assets/6b7b48d3-1b24-4eb1-a05d-3ded4a0e1b47" />
+
+Femur
+<img width="1280" height="651" alt="Screenshot 2026-10-11 at 6 39 47 PM Large" src="https://github.com/user-attachments/assets/9b167ef9-c326-4e53-931e-8d9b08fea6ce" />
+
+Car
+<img width="1142" height="896" alt="Screenshot 2026-10-11 at 6 40 45 PM Large" src="https://github.com/user-attachments/assets/613b4cf4-7377-4259-8556-ae5fd9da4ab4" />
+
+
+Quad
+<img width="1280" height="868" alt="Screenshot 2026-10-11 at 6 42 24 PM Large" src="https://github.com/user-attachments/assets/112af977-dfde-4c4b-9607-c988172da1c4" />
+
+Calisthenics
+
+<img width="514" height="447" alt="Screenshot 2026-10-11 at 6 41 41 PM" src="https://github.com/user-attachments/assets/044a9a99-22ad-4941-92df-b4b3faf43568" />
+
+Myoelectric control
+
+<img width="787" height="440" alt="Screenshot 2026-10-11 at 6 43 39 PM" src="https://github.com/user-attachments/assets/be06f417-3af9-4895-9e15-84428e59910d" />
+
+
+Mouse
+<img width="568" height="448" alt="Screenshot 2026-10-11 at 6 44 24 PM" src="https://github.com/user-attachments/assets/78c53766-9a8e-4683-909a-c87908145084" />
+
+
+watch
+
+<img width="640" height="436" alt="Screenshot 2026-10-11 at 6 45 18 PM Medium" src="https://github.com/user-attachments/assets/7b69106a-4348-4e07-a530-6e15b944d612" />
+
+
+
 
 
 
