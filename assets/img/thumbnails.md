@@ -75,6 +75,9 @@ https://github.com/user-attachments/assets/2843a26b-b9ff-487c-ac3d-21256a61831c
 OWC
 <img width="1280" height="716" alt="Screenshot 2026-10-11 at 6 38 27 PM Large" src="https://github.com/user-attachments/assets/6b7b48d3-1b24-4eb1-a05d-3ded4a0e1b47" />
 
+<img width="1206" height="899" alt="IMG_4062" src="https://github.com/user-attachments/assets/c161a985-1b91-4cf8-b590-a1e22b30efa4" />
+
+
 Femur
 <img width="1280" height="651" alt="Screenshot 2026-10-11 at 6 39 47 PM Large" src="https://github.com/user-attachments/assets/9b167ef9-c326-4e53-931e-8d9b08fea6ce" />
 
