@@ -81,6 +81,10 @@ Femur
 Car
 <img width="1142" height="896" alt="Screenshot 2026-10-11 at 6 40 45 PM Large" src="https://github.com/user-attachments/assets/613b4cf4-7377-4259-8556-ae5fd9da4ab4" />
 
+<img width="2131" height="1599" alt="IMG_0744" src="https://github.com/user-attachments/assets/4583429c-853a-41ce-b239-3c476c2aa918" />
+<img width="1280" height="957" alt="car l" src="https://github.com/user-attachments/assets/52925bc7-dc05-45c3-ab15-9cc9e808cce0" />
+
+
 
 Quad
 <img width="1280" height="868" alt="Screenshot 2026-10-11 at 6 42 24 PM Large" src="https://github.com/user-attachments/assets/112af977-dfde-4c4b-9607-c988172da1c4" />
