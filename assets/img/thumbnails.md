@@ -60,6 +60,16 @@ QDD:
 
 <img src="https://github.com/user-attachments/assets/67c1045a-c6aa-4b54-b15d-29fd0774b6e4" width="50%" />
 
+qddvids:
+
+
+https://github.com/user-attachments/assets/de190b66-2fe3-469e-a8f6-fb3ca62649ce
+
+
+
+https://github.com/user-attachments/assets/5a1d7501-7d94-43de-a842-1ed1a579741b
+
+
 
 Hand
 https://github.com/user-attachments/assets/2843a26b-b9ff-487c-ac3d-21256a61831c
