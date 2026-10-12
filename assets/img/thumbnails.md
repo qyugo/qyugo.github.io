@@ -81,6 +81,14 @@ OWC
 Femur
 <img width="1280" height="651" alt="Screenshot 2026-10-11 at 6 39 47 PM Large" src="https://github.com/user-attachments/assets/9b167ef9-c326-4e53-931e-8d9b08fea6ce" />
 
+<img width="1206" height="868" alt="IMG_4064" src="https://github.com/user-attachments/assets/3861487e-7e73-4dca-97a1-94cfdb0ca4f3" />
+
+<img width="1206" height="967" alt="IMG_4067" src="https://github.com/user-attachments/assets/56513f57-4a09-4cb8-947b-917e6a7ed21e" />
+
+<img width="1206" height="898" alt="IMG_4068" src="https://github.com/user-attachments/assets/fe5042d8-e7b1-4d43-bdaf-3e08052db1f0" />
+
+
+
 Car
 <img width="1142" height="896" alt="Screenshot 2026-10-11 at 6 40 45 PM Large" src="https://github.com/user-attachments/assets/613b4cf4-7377-4259-8556-ae5fd9da4ab4" />
 
