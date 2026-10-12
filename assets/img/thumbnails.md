@@ -13,6 +13,16 @@ YVGESC:
 
 
 
+https://github.com/user-attachments/assets/99499fdc-717e-42fb-94e1-ed3baa9eeaf0
+
+
+
+https://github.com/user-attachments/assets/70107f8b-b126-45ab-95e7-24e2421bbba7
+
+
+
+
+
 Some assembled motors:
 
 
@@ -54,6 +64,11 @@ CS144 Dyno:
 
 
 <img width="1206" height="874" alt="IMG_3888" src="https://github.com/user-attachments/assets/09b6509e-2299-49e5-b390-e5f597f695e1" />
+
+
+
+https://github.com/user-attachments/assets/0d890697-c603-48b3-b4dc-8c966e972f37
+
 
 
 QDD:
