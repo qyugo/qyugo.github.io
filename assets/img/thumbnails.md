@@ -1,4 +1,3 @@
-<img width="1206" height="1449" alt="IMG_4074" src="https://github.com/user-attachments/assets/5a293a30-1dce-49a9-a4ed-4600a95d79da" />
 ## Thumbnails - Ignore
 
 YVGESC:
@@ -108,6 +107,8 @@ Car
 <img width="542" height="448" alt="Screenshot 2026-10-12 at 5 31 35 PM" src="https://github.com/user-attachments/assets/8eff26c4-c093-4904-be1f-19cee1e8660c" />
 
 <img width="1206" height="1449" alt="IMG_4074" src="https://github.com/user-attachments/assets/f4a3831c-13e3-4d5f-be33-e2a2531ec125" />
+
+<img width="1854" height="1069" alt="IMG_4075" src="https://github.com/user-attachments/assets/43283c9a-5a41-43ae-99cd-a7c899eb7e0a" />
 
 
 
