@@ -77,6 +77,11 @@ OWC
 
 <img width="1206" height="899" alt="IMG_4062" src="https://github.com/user-attachments/assets/c161a985-1b91-4cf8-b590-a1e22b30efa4" />
 
+<img width="360" height="365" alt="Screenshot 2026-10-12 at 5 28 54 PM" src="https://github.com/user-attachments/assets/8666ec68-182a-4eb6-8cb5-74b20bee3ca1" />
+<img width="365" height="308" alt="Screenshot 2026-10-12 at 5 28 45 PM" src="https://github.com/user-attachments/assets/7c3adc71-64fe-4b40-968d-021c9983132c" />
+<img width="538" height="390" alt="Screenshot 2026-10-12 at 5 28 20 PM" src="https://github.com/user-attachments/assets/811ec698-6e58-48bb-b49b-ed291c417804" />
+<img width="712" height="450" alt="Screenshot 2026-10-12 at 5 28 11 PM" src="https://github.com/user-attachments/assets/6d80aaf3-61a3-4eb4-94ec-7a9b1423eb62" />
+
 
 Femur
 <img width="1280" height="651" alt="Screenshot 2026-10-11 at 6 39 47 PM Large" src="https://github.com/user-attachments/assets/9b167ef9-c326-4e53-931e-8d9b08fea6ce" />
@@ -94,6 +99,12 @@ Car
 
 <img width="2131" height="1599" alt="IMG_0744" src="https://github.com/user-attachments/assets/4583429c-853a-41ce-b239-3c476c2aa918" />
 <img width="1280" height="957" alt="car l" src="https://github.com/user-attachments/assets/52925bc7-dc05-45c3-ab15-9cc9e808cce0" />
+
+<img width="553" height="448" alt="Screenshot 2026-10-12 at 5 32 05 PM" src="https://github.com/user-attachments/assets/391f8727-ddb5-4199-8e5b-638f9586e0c5" />
+<img width="546" height="448" alt="Screenshot 2026-10-12 at 5 31 56 PM" src="https://github.com/user-attachments/assets/0bf40533-ccc9-422f-b031-9d3d3e5e57f0" />
+<img width="566" height="448" alt="Screenshot 2026-10-12 at 5 31 49 PM" src="https://github.com/user-attachments/assets/1ee425c3-8bbb-4707-9a59-9a05649515dd" />
+<img width="796" height="338" alt="Screenshot 2026-10-12 at 5 31 43 PM" src="https://github.com/user-attachments/assets/4ecfcde9-e0de-4d7f-ac06-ca6a3c12c426" />
+<img width="542" height="448" alt="Screenshot 2026-10-12 at 5 31 35 PM" src="https://github.com/user-attachments/assets/8eff26c4-c093-4904-be1f-19cee1e8660c" />
 
 
 
