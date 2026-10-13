@@ -210,6 +210,19 @@ watch
 <img width="640" height="436" alt="Screenshot 2026-10-11 at 6 45 18 PM Medium" src="https://github.com/user-attachments/assets/7b69106a-4348-4e07-a530-6e15b944d612" />
 
 
+SimpleFOC
+<img width="1585" height="1206" alt="IMG_4086" src="https://github.com/user-attachments/assets/15696336-f52b-4435-a04d-08e145a1c322" />
+
+<img width="1280" height="960" alt="learning2" src="https://github.com/user-attachments/assets/7ceb0199-df76-4097-a8bb-2897a2e83f49" />
+
+
+https://github.com/user-attachments/assets/6e05e3fa-97c7-4898-abce-f02ccf0d9781
+
+<img width="1179" height="856" alt="photo_2026-10-13 18 32 22" src="https://github.com/user-attachments/assets/f9f04f32-98e9-4fcd-90dd-e05b5210ed64" />
+
+
+
+
 
 
 
