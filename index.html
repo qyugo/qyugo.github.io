@@ -291,6 +291,8 @@
   #ascii-bg { -webkit-mask-image: linear-gradient(to right, #000 35%, transparent); mask-image: linear-gradient(to right, #000 35%, transparent); }
   #ascii-bg-r { -webkit-mask-image: linear-gradient(to left, #000 35%, transparent); mask-image: linear-gradient(to left, #000 35%, transparent); }
 
+
+
   </style>
 </head>
 
@@ -416,9 +418,14 @@
 
       </div>
 
+
+
 <section class="other-builds" id="other-builds">
         <h2 class="ob-h">Other projects and things I've built <small>University projects and some smaller builds, no writeups attached. Click for photos.</small></h2>
  
+<div class="ob-scroll">
+    <button class="ob-arrow ob-arrow-prev" type="button" aria-label="Previous projects" hidden>&#8249;</button>
+
         <div class="ob-grid">
  
           <button class="ob-card" type="button" data-title="Build Name 01" data-cap="One-line description." data-media=
@@ -490,6 +497,9 @@
           </button>
  
         </div>
+
+      <button class="ob-arrow ob-arrow-next" type="button" aria-label="Next projects">&#8250;</button> 
+  </div>   
       </section>
 
     </main>
@@ -513,9 +523,10 @@
       <div class="gallery">
         <div class="gallery-track">
           <img src="https://github.com/user-attachments/assets/0a573223-623f-4b98-8a62-b545eca9694f" alt="Custom BLDC motor driver board">
-          <img src="https://github.com/user-attachments/assets/c2031f12-e17d-4904-a512-cbf7a6f4567e" alt="yvgescback" loading="lazy">
+          <img src="https://github.com/user-attachments/assets/c2031f12-e17d-4904-a512-cbf7a6f4567e" alt="yvgescback">
           <video src="https://github.com/user-attachments/assets/99499fdc-717e-42fb-94e1-ed3baa9eeaf0" autoplay loop muted playsinline preload="metadata"></video>
           <video src="https://github.com/user-attachments/assets/70107f8b-b126-45ab-95e7-24e2421bbba7" autoplay loop muted playsinline preload="metadata"></video>
+          <video src="https://github.com/user-attachments/assets/7c8c5738-e686-40d8-ada2-72a4c363c0e5" autoplay loop muted playsinline preload="metadata"></video>
           <img src="https://github.com/user-attachments/assets/17e2f781-bda7-4861-8c69-8794a9f4fdbe" alt="yvgesc kicad" loading="lazy">
         </div>
         <button class="gallery-btn gallery-prev" type="button" aria-label="Previous image">&#8249;</button>
@@ -533,14 +544,14 @@
             <li>Embedded C</li>
             <li>Field Oriented Control</li>
             <li>Controller Area Network (CAN)</li>
-            <li>Gate Drivers</li>
+            <li>MOSFET Gate Drivers</li>
             <li>Design for Manufacturing</li>
-            <li>MOSFET Inverters</li>
             <li>DC-Link Capacitance Design</li>
             <li>USB Design</li>
             <li>Magnetic Encoders</li>
             <li>Return Paths</li>
             <li>Cascaded PI Control</li>
+            <li>ST-Link Debugging</li>
             
           </ul>
         </div>
@@ -1230,6 +1241,9 @@
     start();
   }
 })();
+
+
+
 </script>
 
 <style>
@@ -1350,6 +1364,65 @@
   .ob-side { max-width: 480px; }
 }
 .ob-desc { white-space: pre-line; }
+
+.ob-scroll { position: relative; }
+
+.ob-grid {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.ob-grid::-webkit-scrollbar { display: none; }
+
+.ob-grid .ob-card {
+  flex: 0 0 calc((100% - 3 * 0.75rem) / 4);
+  scroll-snap-align: start;
+}
+@media (max-width: 800px) { .ob-grid .ob-card { flex-basis: calc((100% - 2 * 0.75rem) / 3); } }
+@media (max-width: 560px) { .ob-grid .ob-card { flex-basis: calc((100% - 0.75rem) / 2); } }
+
+.ob-arrow {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(17, 18, 20, 0.85);
+  color: var(--text);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.ob-arrow:hover { border-color: var(--muted); }
+.ob-arrow[hidden] { display: none; }
+.ob-arrow-prev { left: 0.4rem; }
+.ob-arrow-next { right: 0.4rem; }
+
+@media (prefers-reduced-motion: reduce) { .ob-grid { scroll-behavior: auto; } }
+
+@media (min-width: 1100px) {
+  .ob-arrow-prev { left: -3.25rem; }
+  .ob-arrow-next { right: -3.25rem; }
+}
+
+.ob-arrow {
+  top: 50%;
+  height: 60%;
+  transform: translateY(-50%);
+  border-radius: 5px;
+  background: var(--surface);
+  font-size: 1.8rem;
+}
+
+main .ob-h { display: block; }
+.ob-h small { display: block; margin-top: 0.2rem; }
+
 </style>
 
 <script>
@@ -1443,6 +1516,28 @@
       d.querySelectorAll('video').forEach(v => { if (d.open) { v.preload = 'metadata'; v.play().catch(() => {}); } else { v.pause(); } });
     }).observe(d, { attributes: true, attributeFilter: ['open'] });
   });
+</script>
+
+<script>
+  (function () {
+    const grid = document.querySelector('.ob-grid');
+    const prev = document.querySelector('.ob-arrow-prev');
+    const next = document.querySelector('.ob-arrow-next');
+    if (!grid || !prev || !next) return;
+
+    const page = () => grid.clientWidth + 12;
+
+    prev.addEventListener('click', () => grid.scrollBy({ left: -page() }));
+    next.addEventListener('click', () => grid.scrollBy({ left: page() }));
+
+    const update = () => {
+      prev.hidden = grid.scrollLeft < 4;
+      next.hidden = grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 4;
+    };
+    grid.addEventListener('scroll', update, { passive: true });
+    addEventListener('resize', update);
+    update();
+  })();
 </script>
 
 </body>
