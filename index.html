@@ -40,7 +40,7 @@
 
     /* ---------- Header ---------- */
 
-    header { padding: 4.5rem 0 3rem; border-bottom: 1px solid var(--line); }
+    header { padding: 4.5rem 0 0rem; border-bottom: 1px solid var(--line); }
 
     /* Header with 3d model */
     .header-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
@@ -90,8 +90,11 @@
 
     /* ---------- Projects ---------- */
 
-    main { padding: 3rem 0 4rem; }
-    main h2 { font-size: 1.1rem; font-weight: 600; margin: 0 0 1.25rem; }
+    main { padding: 1.5rem 0 4rem; }
+    main h2 { font-size: 1.5rem; font-weight: 600; margin: 0 0 1.25rem; }
+    main h2 { margin-bottom: 0.25rem; } 
+    .subtitle { margin: 0 0 1.25rem; color: var(--muted); font-size: 0.9rem; }
+    
 
     .grid {
       display: grid;
@@ -226,9 +229,74 @@
     .btn-primary:hover { background: #e6c63c; border-color: #e6c63c; }
 
     footer { padding: 2rem 0 3rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+
+
+  /* ---------- Other builds (gallery footnote) ---------- */
+  .other-builds { margin-top: 3.5rem; padding-top: 1.75rem; border-top: 1px solid var(--line); }
+  main .ob-h {
+    font-size: 1.25rem; font-weight: 600; color: var(--muted);
+    margin: 0 0 1rem; display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap;
+  }
+  .ob-h small { font-weight: 400; font-size: 0.8rem; opacity: 0.75; }
+ 
+  .ob-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
+  @media (max-width: 800px) { .ob-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 560px) { .ob-grid { grid-template-columns: repeat(2, 1fr); } }
+ 
+  .ob-card {
+    display: flex; flex-direction: column; width: 100%; padding: 0; text-align: left;
+    font: inherit; color: inherit; background: var(--surface);
+    border: 1px solid var(--line); border-radius: 5px; overflow: hidden; cursor: pointer;
+  }
+  .ob-card:hover { border-color: var(--muted); }
+ 
+  .ob-thumb { position: relative; aspect-ratio: 4 / 3; background: #222428; }
+  .ob-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .ob-ph { position: absolute; inset: 0; display: grid; place-items: center; font-size: 0.75rem; color: var(--muted); opacity: 0.6; }
+  .ob-count {
+    position: absolute; right: 0.4rem; bottom: 0.4rem; padding: 0 0.4rem; font-size: 0.7rem;
+    color: var(--muted); background: rgba(17, 18, 20, 0.75); border-radius: 3px;
+  }
+  .ob-body { padding: 0.55rem 0.7rem 0.7rem; }
+  .ob-name { font-size: 0.85rem; font-weight: 600; line-height: 1.3; margin: 0; }
+  .ob-cap { font-size: 0.75rem; color: var(--muted); margin: 0.15rem 0 0; line-height: 1.4; }
+ 
+  .ob-viewer {
+    position: fixed; inset: 0; z-index: 1000; display: none; flex-direction: column;
+    align-items: center; justify-content: center; gap: 0.75rem; padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.85);
+  }
+  .ob-viewer.open { display: flex; }
+  .ob-stage { display: grid; place-items: center; max-width: min(900px, 94vw); }
+  .ob-stage img, .ob-stage video { max-width: 100%; max-height: 70vh; border-radius: 4px; }
+  .ob-stage iframe { width: min(800px, 90vw); aspect-ratio: 16 / 9; border: 0; border-radius: 4px; }
+  .ob-info { text-align: center; max-width: 60ch; }
+  .ob-info b { font-weight: 600; }
+  .ob-info p { margin: 0.2rem 0 0; font-size: 0.9rem; color: var(--muted); }
+  .ob-nav { display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; color: var(--muted); }
+  .ob-viewer button {
+    font: inherit; color: var(--text); background: rgba(17, 18, 20, 0.75);
+    border: 1px solid var(--line); border-radius: 4px; padding: 0.3rem 0.8rem; cursor: pointer;
+  }
+  .ob-viewer button:hover { border-color: var(--muted); }
+  .ob-close { position: absolute; top: 1rem; right: 1rem; }
+
+
+  #ascii-bg, #ascii-bg-r {
+  position: fixed; top: 0; height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.12;
+}
+  #ascii-bg { -webkit-mask-image: linear-gradient(to right, #000 35%, transparent); mask-image: linear-gradient(to right, #000 35%, transparent); }
+  #ascii-bg-r { -webkit-mask-image: linear-gradient(to left, #000 35%, transparent); mask-image: linear-gradient(to left, #000 35%, transparent); }
+
   </style>
 </head>
+
 <body>
+
+  <canvas id="ascii-bg" aria-hidden="true"></canvas>
 
   <div class="wrap">
 
@@ -238,12 +306,12 @@
           <h1>Hugo F.</h1>
           <p class="role">Actuator Hardware Enjoyer</p>
           <p class="intro">
-            I enjoy building spinning things. Current favorite projects are the custom BLDC motor, custom driver, and quasi-direct-drive drivetrain for robotic actuation.
+            I enjoy building movement. Currently focusing on robotic actuator subsystems.
             <br>
           </p>
           <ul class="links">
-            <li><a href="https://github.com/qyugo">GitHub - @qyugo </a></li>
             <li><a href="mailto:ukahan251@gmail.com">ukahan251@gmail.com</a></li>
+            <li><a href="https://github.com/qyugo">GitHub - @qyugo </a></li>
           </ul>
         </div>                   
         <div class="model">      
@@ -253,7 +321,8 @@
     </header>
 
     <main>
-      <h2>Projects</h2>
+      <h2>Main: Actuator Projects</h2>
+      <p class="subtitle">Independent projects I designed, built, and tested this year (2026), with full documentation.</p>
 
       <div class="grid">
 
@@ -267,8 +336,8 @@
             <img src="https://github.com/user-attachments/assets/0a573223-623f-4b98-8a62-b545eca9694f" alt="Custom FOC Controller" loading="lazy">
           </div>
           <div class="card-body">
-            <h3>YVGESC-1</h3>
-            <p>Custom FOC controller for servo control of Brushless DC motors. Learning journey after studying many other COTS drivers and combining things I like, and removing things I don't like.</p>
+            <h3>YVGESC-1: BLDC Driver</h3>
+            <p>My custom FOC controller for servo control of Brushless DC motors. Learning journey after studying many other COTS drivers and combining things I like, and removing things I don't like.</p>
           </div>
         </button>
 
@@ -346,6 +415,83 @@
 
 
       </div>
+
+<section class="other-builds" id="other-builds">
+        <h2 class="ob-h">Other projects and things I've built <small>University projects and some smaller builds, no writeups attached. Click for photos.</small></h2>
+ 
+        <div class="ob-grid">
+ 
+          <button class="ob-card" type="button" data-title="Build Name 01" data-cap="One-line description." data-media=
+          "https://github.com/user-attachments/assets/c161a985-1b91-4cf8-b590-a1e22b30efa4, 
+          https://github.com/user-attachments/assets/35f397b5-2dfe-4298-9d7c-be204433f331#video,
+          https://github.com/user-attachments/assets/811ec698-6e58-48bb-b49b-ed291c417804,
+          https://github.com/user-attachments/assets/ba6f2e55-2707-465a-afed-f7f9fe798bfb#video,
+          https://github.com/user-attachments/assets/83057724-e6b6-4ab0-a09c-dd7c9fd4b7f9#video,
+          https://github.com/user-attachments/assets/6d80aaf3-61a3-4eb4-94ec-7a9b1423eb62,
+          https://github.com/user-attachments/assets/7c3adc71-64fe-4b40-968d-021c9983132c, 
+          https://github.com/user-attachments/assets/8666ec68-182a-4eb6-8cb5-74b20bee3ca1">
+            <div class="ob-thumb"><div class="ob-ph">01</div></div>
+            <div class="ob-body"><p class="ob-name">Oscillating Water Column</p><p class="ob-cap">University capstone. Capture chamber and bidirectional Wells turbine for converting energy from ocean wave oscillation · 2023-24</p></div>
+          </button>
+
+          <button class="ob-card" type="button" data-title="Hybrid Car (MATLAB Design/Analysis)" data-cap="One-line description." 
+          data-media="
+          https://github.com/user-attachments/assets/52925bc7-dc05-45c3-ab15-9cc9e808cce0, 
+          https://github.com/user-attachments/assets/43283c9a-5a41-43ae-99cd-a7c899eb7e0a, 
+          https://github.com/user-attachments/assets/391f8727-ddb5-4199-8e5b-638f9586e0c5, 
+          https://github.com/user-attachments/assets/0bf40533-ccc9-422f-b031-9d3d3e5e57f0, 
+          https://github.com/user-attachments/assets/1ee425c3-8bbb-4707-9a59-9a05649515dd, 
+          https://github.com/user-attachments/assets/4ecfcde9-e0de-4d7f-ac06-ca6a3c12c426, 
+          https://github.com/user-attachments/assets/4583429c-853a-41ce-b239-3c476c2aa918">
+            <div class="ob-thumb"><div class="ob-ph">02</div></div>
+            <div class="ob-body"><p class="ob-name">Hybrid Car (MATLAB Design/Analysis)</p><p class="ob-cap">Undergraduate Automotive Engineering project @ Tandon · 2023</p></div>
+          </button>
+
+ 
+          <button class="ob-card" type="button" data-title="Build Name 02" data-cap="One-line description." data-media=
+          "https://github.com/user-attachments/assets/3861487e-7e73-4dca-97a1-94cfdb0ca4f3, 
+          https://github.com/user-attachments/assets/56513f57-4a09-4cb8-947b-917e6a7ed21e, 
+          https://github.com/user-attachments/assets/fe5042d8-e7b1-4d43-bdaf-3e08052db1f0">
+            <div class="ob-thumb"><div class="ob-ph">03</div></div>
+            <div class="ob-body"><p class="ob-name">Biodegradable Bone Scaffolding</p><p class="ob-cap">Undergraduate Finite Element Analysis project · 2024</p></div>
+          </button>
+ 
+          
+          <button class="ob-card" type="button" data-title="Build Name 04" data-cap="One-line description." data-media="
+          https://github.com/user-attachments/assets/044a9a99-22ad-4941-92df-b4b3faf43568,
+          https://github.com/user-attachments/assets/f30c2842-3bc2-4409-9eb3-0a7d60a1c7d3#video">
+            <div class="ob-thumb"><div class="ob-ph">05</div></div>
+            <div class="ob-body"><p class="ob-name">Mini Calisthenics Robot</p><p class="ob-cap">Simple concept project using SG90 servos · 2026</p></div>
+          </button>
+
+          <button class="ob-card" type="button" data-title="Build Name 04" data-cap="One-line description." data-media="https://github.com/user-attachments/assets/112af977-dfde-4c4b-9607-c988172da1c4">
+            <div class="ob-thumb"><div class="ob-ph">04</div></div>
+            <div class="ob-body"><p class="ob-name">Quadcopter (currently on pause)</p><p class="ob-cap">Hardware and software for 3-D printed quadcopter</p></div>
+          </button>
+
+          <button class="ob-card" type="button" data-title="Build Name 04" data-cap="One-line description." data-media="
+          https://github.com/user-attachments/assets/be06f417-3af9-4895-9e15-84428e59910d,
+          https://github.com/user-attachments/assets/84b01795-3515-4bf7-8b72-2c8382276758#video,
+          https://github.com/user-attachments/assets/0339ff1c-c300-4ae1-ac93-ceb3d91477fc#video">
+            <div class="ob-thumb"><div class="ob-ph">06</div></div>
+            <div class="ob-body"><p class="ob-name">Myoelectric Control for Robotic Hand</p><p class="ob-cap">Learning project of cleaning up myoelectric signals via a moving-average filter on a prosthetic hand (Code only)</p></div>
+          </button>
+
+          <button class="ob-card" type="button" data-title="Build Name 04" data-cap="One-line description." data-media="
+          https://github.com/user-attachments/assets/78c53766-9a8e-4683-909a-c87908145084,
+          https://github.com/user-attachments/assets/aaa713f2-81a4-48fd-bcb7-95391cb53a21#video">
+            <div class="ob-thumb"><div class="ob-ph">07</div></div>
+            <div class="ob-body"><p class="ob-name">Mouse Droid Cat Treat Dispenser</p><p class="ob-cap">For fun, nothing complex.</p></div>
+          </button>
+
+          <button class="ob-card" type="button" data-title="Build Name 04" data-cap="One-line description." data-media="https://github.com/user-attachments/assets/7b69106a-4348-4e07-a530-6e15b944d612">
+            <div class="ob-thumb"><div class="ob-ph">08</div></div>
+            <div class="ob-body"><p class="ob-name">Seiko NH35 Repair</p><p class="ob-cap">Watchmaking practice.</p></div>
+          </button>
+ 
+        </div>
+      </section>
+
     </main>
 
     <footer>
@@ -367,7 +513,9 @@
       <div class="gallery">
         <div class="gallery-track">
           <img src="https://github.com/user-attachments/assets/0a573223-623f-4b98-8a62-b545eca9694f" alt="Custom BLDC motor driver board">
-          <img src="https://github.com/user-attachments/assets/94356e5a-d1d8-4541-9c04-5c2432c5c798" alt="yvgescback" loading="lazy">
+          <img src="https://github.com/user-attachments/assets/c2031f12-e17d-4904-a512-cbf7a6f4567e" alt="yvgescback" loading="lazy">
+          <video src="https://github.com/user-attachments/assets/99499fdc-717e-42fb-94e1-ed3baa9eeaf0" autoplay loop muted playsinline preload="metadata"></video>
+          <video src="https://github.com/user-attachments/assets/70107f8b-b126-45ab-95e7-24e2421bbba7" autoplay loop muted playsinline preload="metadata"></video>
           <img src="https://github.com/user-attachments/assets/17e2f781-bda7-4861-8c69-8794a9f4fdbe" alt="yvgesc kicad" loading="lazy">
         </div>
         <button class="gallery-btn gallery-prev" type="button" aria-label="Previous image">&#8249;</button>
@@ -402,7 +550,7 @@
         <h3 id="preview-bldc-title">YVGESC1 - Custom BLDC Driver</h3>
 
         <p>
-          Designed in KiCad and fabricated with JLCPCB for driving my custom motors and drivetrains. Check out the full documentations page below for instructions, design process, schematics, and actual details.
+          Designed in KiCad and fabricated with JLCPCB for driving my custom motors and drivetrains. Check out the full documentations page below for instructions, design process, schematics, and testing.
           Features USB flashing, as well as a USB to CAN pipeline, and a heat dissipation algorithm without a brake resistor.
         </p>
 
@@ -412,9 +560,9 @@
           <li><span>Gate Driver/MCU</span> DRV8323H/STM32G431RBT6</li>
           <li><span>Flashing</span> ST-Link SWD, USB</li>
           <li><span>Communications</span> CAN, USB to SLCAN</li>
-          <li><span>Regen</span> Firmware-controlled Motor Coil Dissipation</li>
+          <!-- <li><span>Regen</span> Firmware-controlled Motor Coil Dissipation</li> -->
           <li><span>Encoder</span> AS5047P Absolute Magnetic</li>
-          <li><span>Status</span> Manufactured, currently writing firmware</li>
+          <li><span>Status</span> Complete, currently writing advanced configs.</li>
         </ul>
 
         <div class="actions">
@@ -465,16 +613,14 @@
         </p>
 
         <ul class="specs">
-          <li><span>Mass</span> 568g (PETG)</li>
-          <li><span>Height/Diameter</span> 32mm / 102mm </li>
-          <li><span>Motor Type</span> 3-phase Brushless DC</li>
+          <li><span>Mass/Height/Diameter</span> 568g (PETG) / 32mm / 102mm</li>
+          <li><span>Motor Type/Phase</span> 3-phase Brushless DC, Star (Y)</li>
           <li><span>KV</span> 125 RPM/V </li>
           <li><span>Max Current per phase</span> 10A </li>
           <li><span>Max Speed</span> 1482 RPM </li>
-          <li><span>Phase Connection </span> Star</li>
-          <li><span>PM Magnet Type</span> N42 </li>
-          <li><span>Airgap Length</span> 1.25mm </li>
-          <li><span>Status</span> V1 complete</li>
+          <li><span>PM Magnet Type</span> NdFeB N38 (V1), N42 (V2) </li>
+          <li><span>Airgap Length</span> 1.25mm (V1) 0.75mm (V2) </li>
+          <li><span>Status</span> V1/V2 complete. Developing metal V3.</li>
         </ul>
 
         <div class="actions">
@@ -497,7 +643,8 @@
         <div class="gallery">
           <div class="gallery-track">
             <img src="https://github.com/user-attachments/assets/67c1045a-c6aa-4b54-b15d-29fd0774b6e4" alt="qdd1cad">
-            <img src="IMAGE_2_LINK" alt="Describe image 2" loading="lazy">
+            <video src="https://github.com/user-attachments/assets/5a1d7501-7d94-43de-a842-1ed1a579741b" autoplay loop muted playsinline preload="metadata"></video>
+            <video src="https://github.com/user-attachments/assets/de190b66-2fe3-469e-a8f6-fb3ca62649ce" autoplay loop muted playsinline preload="metadata"></video>
           </div>
           <button class="gallery-btn gallery-prev" type="button" aria-label="Previous image">&#8249;</button>
           <button class="gallery-btn gallery-next" type="button" aria-label="Next image">&#8250;</button>
@@ -603,9 +750,12 @@
         <div class="gallery">
           <div class="gallery-track">
             <img src="https://github.com/user-attachments/assets/4be18112-a142-4118-a1e1-e22dc8d58fe3" alt="dyno1setup">
+            <video src="https://github.com/user-attachments/assets/0d890697-c603-48b3-b4dc-8c966e972f37" autoplay loop muted playsinline preload="metadata"></video>
             <img src="https://github.com/user-attachments/assets/0c5450ea-401b-4a51-ab1f-7ca22592af63" alt="deconstructed" loading="lazy">
             <img src="https://github.com/user-attachments/assets/09b6509e-2299-49e5-b390-e5f597f695e1" alt="On car" loading="lazy">
             <img src="https://github.com/user-attachments/assets/5c16d873-91ee-44af-981e-26dbd87bed38" alt="dyno1setup">
+
+            
           </div>
           <button class="gallery-btn gallery-prev" type="button" aria-label="Previous image">&#8249;</button>
           <button class="gallery-btn gallery-next" type="button" aria-label="Next image">&#8250;</button>
@@ -718,6 +868,8 @@
 
     <script> //end of previews
 
+
+
     // Open previews
     document.querySelectorAll('[data-preview]').forEach(card => {
       card.addEventListener('click', () => {
@@ -734,7 +886,6 @@
       });
     });
 
-        // Image galleries
         // Image galleries
     document.querySelectorAll('.gallery').forEach(gallery => {
       const track = gallery.querySelector('.gallery-track');
@@ -779,7 +930,7 @@
     });
   </script>
 
-  <!-- New driver and motor model -->
+  <!-- motor model -->
   <script type="importmap">
     {
       "imports": {
@@ -807,7 +958,7 @@
 
     const canvas = document.getElementById('model');
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
@@ -829,7 +980,7 @@
     const key = new THREE.DirectionalLight(0xffffff, 3);
     key.position.set(1.5, 6, 2);
     key.castShadow = true;
-    key.shadow.mapSize.set(2048, 2048);
+    key.shadow.mapSize.set(1024, 1024);
     key.shadow.camera.left = -1.2;
     key.shadow.camera.right = 1.2;
     key.shadow.camera.top = 1.2;
@@ -884,6 +1035,415 @@
       renderer.render(scene, camera);
     });
   </script>
+
+    <div class="ob-viewer" id="obViewer" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button class="ob-close" id="obClose" type="button">Close</button>
+    <div class="ob-stage" id="obStage"></div>
+    <div class="ob-info"><b id="obTitle"></b><p id="obCap"></p></div>
+    <div class="ob-nav">
+      <button id="obPrev" type="button" aria-label="Previous">&#8249;</button>
+      <span id="obPos"></span>
+      <button id="obNext" type="button" aria-label="Next">&#8250;</button>
+    </div>
+  </div>
+ 
+  <script>
+    (function () {
+      const viewer = document.getElementById('obViewer');
+      const stage = document.getElementById('obStage');
+      const prev = document.getElementById('obPrev');
+      const next = document.getElementById('obNext');
+      const pos = document.getElementById('obPos');
+      let items = [], idx = 0;
+ 
+      const parse = s => (s || '').split(',').map(x => x.trim()).filter(Boolean);
+      const kind = u => /youtube\.com\/embed|player\.vimeo\.com/.test(u) ? 'embed'
+                : /\.(mp4|webm|mov)(\?|#|$)/i.test(u) || /#video$/i.test(u) ? 'video' : 'img';
+ 
+      document.querySelectorAll('.ob-card').forEach(card => {
+        const media = parse(card.dataset.media);
+        const cover = media.find(m => kind(m) === 'img');
+        const thumb = card.querySelector('.ob-thumb');
+        if (cover) {
+          thumb.querySelector('.ob-ph')?.remove();
+          const img = new Image();
+          img.src = cover; img.alt = card.dataset.title || ''; img.loading = 'lazy';
+          thumb.prepend(img);
+        }
+        if (media.length > 1) {
+          const b = document.createElement('span');
+          b.className = 'ob-count'; b.textContent = media.length;
+          thumb.appendChild(b);
+        }
+        card.addEventListener('click', () => open(card, media));
+      });
+ 
+      function show() {
+        stage.innerHTML = '';
+        if (!items.length) {
+          stage.innerHTML = '<p style="color:var(--muted)">No photos yet.</p>';
+          pos.textContent = '';
+          return;
+        }
+        const u = items[idx], k = kind(u);
+        let el;
+        if (k === 'img') { el = new Image(); el.src = u; }
+        else if (k === 'video') { el = document.createElement('video'); Object.assign(el, { src: u, controls: true, autoplay: true, loop: true, muted: true, playsInline: true }); }
+        else { el = document.createElement('iframe'); el.src = u; el.allowFullscreen = true; el.allow = 'autoplay; encrypted-media; picture-in-picture'; }
+        stage.appendChild(el);
+        pos.textContent = (idx + 1) + ' / ' + items.length;
+      }
+      function open(card, media) {
+        items = media; idx = 0;
+        document.getElementById('obTitle').textContent = card.dataset.title || '';
+        document.getElementById('obCap').textContent = card.dataset.cap || '';
+        prev.hidden = next.hidden = items.length < 2;
+        viewer.classList.add('open'); show();
+      }
+      function close() { viewer.classList.remove('open'); stage.innerHTML = ''; }
+      function step(d) { if (items.length > 1) { idx = (idx + d + items.length) % items.length; show(); } }
+ 
+      document.getElementById('obClose').addEventListener('click', close);
+      prev.addEventListener('click', () => step(-1));
+      next.addEventListener('click', () => step(1));
+      viewer.addEventListener('click', e => { if (e.target === viewer) close(); });
+      document.addEventListener('keydown', e => {
+        if (!viewer.classList.contains('open')) return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowLeft') step(-1);
+        if (e.key === 'ArrowRight') step(1);
+      });
+    })();
+  </script>
+
+<script>
+(function () {
+  const IMAGE_PATH = 'assets/bg.png';  
+  const RAMP = ' .:-=+*#%@';
+  const CELL = 12; //char size
+  const CONTENT_W = 1000; //center gap
+  const FPS = 6;
+  const SHIMMER = 0.06; // 0 = no movement
+  const SPEED = 0.5;
+  const MAX_SRC = 200; // downscale to px
+
+  const cvL = document.getElementById('ascii-bg');
+  const cvR = cvL.cloneNode();
+  cvR.id = 'ascii-bg-r';
+  cvL.after(cvR);
+  const ctxL = cvL.getContext('2d');
+  const ctxR = cvR.getContext('2d');
+
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const CW = CELL * 0.6;
+  let useImage = !!IMAGE_PATH;
+  let small = null, lum = null;
+  let cols = 0, rows = 0, sideCols = 0;
+
+  function sample() {
+    if (!small) return;
+    const off = document.createElement('canvas');
+    off.width = cols; off.height = rows;
+    const o = off.getContext('2d');
+    const s = Math.max(cols / small.width, rows / small.height);
+    const w = small.width * s, h = small.height * s;
+    o.drawImage(small, (cols - w) / 2, (rows - h) / 2, w, h);
+    const d = o.getImageData(0, 0, cols, rows).data;
+    lum = new Float32Array(cols * rows);
+    for (let i = 0; i < lum.length; i++)
+      lum[i] = (0.2126 * d[i * 4] + 0.7152 * d[i * 4 + 1] + 0.0722 * d[i * 4 + 2]) / 255;
+  }
+
+  function ch(x, y, t) {
+    let v = lum
+      ? lum[y * cols + x] + SHIMMER * Math.sin(x * 0.25 + y * 0.15 + t * SPEED)
+      : 0.5 + 0.5 * Math.sin(x * 0.12 + t * SPEED) * Math.cos(y * 0.2 - t * SPEED * 0.7);
+    v = Math.max(0, Math.min(0.999, v));
+    return RAMP[Math.floor(v * RAMP.length)];
+  }
+
+  function drawSide(ctx, startCol, t) {
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    ctx.font = CELL + 'px monospace';
+    ctx.fillStyle = '#fff';
+    ctx.textBaseline = 'top';
+    for (let y = 0; y < rows; y++) {
+      let s = '';
+      for (let x = 0; x < sideCols; x++) s += ch(startCol + x, y, t);
+      ctx.fillText(s, 0, y * CELL);
+    }
+  }
+
+  function draw(t) {
+    if (!sideCols) return;
+    drawSide(ctxL, 0, t);
+    drawSide(ctxR, cols - sideCols, t);
+  }
+
+  function size() {
+    const vw = innerWidth, vh = innerHeight;
+    cols = Math.ceil(vw / CW);
+    rows = Math.ceil(vh / CELL);
+    sideCols = Math.max(0, Math.floor(((vw - CONTENT_W) / 2) / CW));
+    const px = Math.ceil(sideCols * CW);
+    [cvL, cvR].forEach(c => {
+      c.width = px;
+      c.height = sideCols ? vh : 0;
+      c.style.width = px + 'px';
+    });
+    cvL.style.left = '0';
+    cvR.style.right = '0';
+    if (useImage) sample();
+    draw(0);
+  }
+
+  let last = 0;
+  function loop(ms) {
+    if (ms - last > 1000 / FPS) { last = ms; draw(ms / 1000); }
+    requestAnimationFrame(loop);
+  }
+
+  function start() {
+    size();
+    const animate = !reduce && (!useImage || SHIMMER > 0);
+    if (animate) requestAnimationFrame(loop);
+  }
+
+  let rt;
+  addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(size, 150); });
+
+  if (useImage) {
+    const img = new Image();
+    img.onload = () => {
+      img.onload = img.onerror = null;
+      const s = Math.min(1, MAX_SRC / Math.max(img.naturalWidth, img.naturalHeight));
+      small = document.createElement('canvas');
+      small.width = Math.max(1, Math.round(img.naturalWidth * s));
+      small.height = Math.max(1, Math.round(img.naturalHeight * s));
+      small.getContext('2d').drawImage(img, 0, 0, small.width, small.height);
+      img.src = '';
+      start();
+    };
+    img.onerror = () => { useImage = false; start(); };
+    img.src = IMAGE_PATH;
+  } else {
+    start();
+  }
+})();
+</script>
+
+<style>
+  #obCap { display: none; }
+  .ob-viewer { overflow-y: auto; justify-content: safe center; }
+
+  .ob-layout {
+    display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 1.5rem; align-items: start; width: min(1040px, 94vw);
+  }
+  @media (max-width: 800px) { .ob-layout { grid-template-columns: 1fr; } }
+
+  .ob-main { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; min-width: 0; }
+  .ob-main .ob-stage { max-width: 100%; }
+  .ob-stage img, .ob-stage video { max-height: 70vh; }
+  @media (max-width: 800px) { .ob-stage img, .ob-stage video { max-height: 45vh; } }
+
+  .ob-side { min-width: 0; text-align: left; }
+  .ob-side .ob-info { text-align: left; max-width: none; }
+  .ob-side .ob-info b { font-size: 1.1rem; }
+
+  .ob-extra {
+    margin: 0.75rem 0 0; text-align: left;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
+    padding: 0.9rem 1rem 1rem;
+  }
+  .ob-extra[hidden] { display: none; }
+  .ob-desc { margin: 0; font-size: 0.9rem; color: var(--text); line-height: 1.55; }
+  .ob-skills-h { font-size: 0.8rem; font-weight: 600; color: var(--muted); margin: 0.9rem 0 0.5rem; }
+  .ob-skills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; padding: 0; list-style: none; }
+  .ob-skills li { font-size: 0.8rem; padding: 0.15rem 0.55rem; border: 1px solid var(--line); border-radius: 3px; }
+
+  @media (min-width: 801px) {
+  .ob-viewer { padding: 1rem; }
+
+  .ob-layout {
+    width: 96vw;
+    max-width: 1700px;
+    grid-template-columns: minmax(0, 2.4fr) minmax(300px, 1fr);
+    gap: 2rem;
+  }
+
+  .ob-main { align-items: stretch; }
+  .ob-main .ob-stage { width: 100%; max-width: 100%; }
+
+  .ob-stage img,
+  .ob-stage video {
+    width: 70%;
+    height: 48vh;
+    max-height: none;
+    object-fit: contain;
+  }
+  .ob-stage iframe { width: 100%; }
+}
+.ob-viewer .ob-nav {
+  justify-content: center;
+  align-self: center;
+  width: 100%;
+  gap: 1.5rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.ob-viewer .ob-nav button {
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+  font-size: 2rem;
+  line-height: 1;
+  border-radius: 50%;
+}
+
+.ob-viewer .ob-close {
+  top: 1.25rem;
+  right: 1.25rem;
+  padding: 0.7rem 1.4rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+@media (min-width: 801px) {
+  .ob-layout {
+    align-items: center;
+    gap: 0rem;
+    grid-template-columns: minmax(0, 2.3fr) minmax(340px, 1fr);
+  }
+}
+
+.ob-side .ob-info b { font-size: 1.5rem; }
+
+.ob-extra { padding: 1.25rem 1.4rem 1.4rem; }
+.ob-desc { font-size: 1.05rem; line-height: 1.65; }
+.ob-skills-h { font-size: 0.95rem; margin: 1.2rem 0 0.7rem; }
+.ob-skills { gap: 0.5rem; }
+.ob-skills li { font-size: 0.95rem; padding: 0.25rem 0.75rem; }
+
+@media (min-width: 801px) {
+  .ob-layout {
+    width: auto;
+    max-width: 96vw;
+    justify-content: center;
+    grid-template-columns: auto minmax(340px, 480px);
+    gap: 0rem;
+  }
+
+  .ob-main { align-items: center; }
+  .ob-main .ob-stage { width: auto; }
+
+  .ob-stage img,
+  .ob-stage video {
+    width: 70%;
+    height: 86vh;
+    max-width: 62vw;
+    max-height: none;
+    object-fit: contain;
+  }
+  .ob-stage iframe { width: min(800px, 62vw); }
+
+  .ob-side { max-width: 480px; }
+}
+.ob-desc { white-space: pre-line; }
+</style>
+
+<script>
+  (function () {
+
+    const DETAILS = {
+      'Oscillating Water Column': {
+        desc: 'Undergraduate project for ocean wave power generation. Captures and converts waves into a "piston"-like body to generate oscillating airflow through a turbine that spins in one direction regardless of airflow direction. \n\n Group component: \n - Dimensioned chamber for an internal frequency resonant to average ocean wave frequencies in the Persian Gulf.\n - Fabricated prototype column using CNC-cut acrylic with toleranced notch fittings and heat bending. \n\n Individual Subcomponent: \n - Designed and 3D printed multiple turbine sizes and configurations (NACA0015 airfoil, guide vanes, mono- and biplane), and tested in wave flume generator for RPM and self-starting behavior.',
+        skills: ['Fluid Mechanics', 'MATLAB', 'Stochastic Modeling', 'Hydropower Energy Conversion', 'CAD - SolidWorks', 'DFM for CNC']
+      },
+      'Hybrid Car (MATLAB Design/Analysis)': {
+        desc: '- Designed concept mid-engine hybrid automobile for top speed and acceleration parameters for a General Motors LT5 engine + YASA 750R motor. \n - Characterized/plotted energy consumption at certain speeds, and climbing gradeability at 5° @ 45 km/h in MATLAB. \n - Plotted power requirements for acceleration of 0-100km/h in 2.8s + top speed of 206mph (92m/s) in MATLAB. \n - Designed and simulated suspension system in Simulink. \n - Characterized cornering, geartrain analysis, and tractive force in MATLAB. \n - Designed internal packaging dimensions for ergonomics and drew an exterior concept design for fun.',
+        skills: ['MATLAB/Simulink', 'Powertrain Modeling', 'Vehicle Dynamics', 'Automotive Design', 'Suspension Design/Modeling', 'Tractice Force Analysis']
+      },
+      'Biodegradable Bone Scaffolding': {
+        desc: 'Undergraduate Finite Element Modeling and Analysis elective final project + Biomaterials elective mix. Designed 3-D printable, porous, adjustable, and biodegradable implant for critical bone defects to prevent bone atrophy due to stress-shielding phenomena. \n - Conducted Finite Element analysis in ANSYS Mechanical of a femur bone.\n - Designed bone scaffold geometry in SOLIDWORKS with adjustable POROSITY parameter to match anisotropic properties of bone in equivalent Young modulus. \n - Validated results match that of literature and similar designs.',
+        skills: ['Finite Element Analysis', 'ANSYS', 'Biomaterials', 'Biomechanics']
+      },
+      'Mini Calisthenics Robot': {
+        desc: 'Concept with cheap SG90 servos, for fun visualization. \n\n Eventually, I wouldd like to create a quarter- or half-sized humanoid that can perform these moves on the floor or an unstable surface, such as gymnastics rings. Currently developing custom BLDC motors, custom QDD actuators, and a custom FOC controller for proof of concept, check out those projects of mine if you have not already.',
+        skills: ['Servo Control', 'CAD - Onshape', '3D Printing', 'Arduino C++']
+      },
+      'Quadcopter (currently on pause)': {
+        desc: 'Simulation and build of a 5x5 inch quadcopter from scratch. ESP32 + RS2205 40A drone ESCs with WiFi remote control. Coded and tuned in PlatformIO using C++. \n Paused, still in progress on the controls side for maneuverability after a recent crash.',
+        skills: ['3D Printing', 'Flight Control', 'Embedded Systems', 'Electronics']
+      },
+      'Myoelectric Control for Robotic Hand': {
+        desc: 'Learning project on cleaning up myoelectric signals with a moving-average filter to drive a prosthetic hand. Code only.',
+        skills: ['Signal Processing', 'Electromyography', 'Moving-Average Filter', 'Arduino']
+      },
+      'Mouse Droid Cat Treat Dispenser': {
+        desc: 'I stripped down a cheap RC car from Hobby Lobby, and then designed it to look like the MSE-6 Mouse Droid from Star Wars, with a RF module->servo-controlled cat treat dispenser so I can entertain my geriatric cat for his 14th birthday. Not much technical complexity as my other projects, please check those out as well. \n Mostly a fun project for practicing CAD on a new software, as I spent a lot of time replicating the PCB patterns found on the side of the droid in the film franchise.',
+        skills: ['3D Printing', 'Electronics', 'Servo Control']
+      },
+      'Seiko NH35 Repair': {
+        desc: 'Watchmaking practice: servicing a Seiko NH35 automatic movement.',
+        skills: ['Watchmaking', 'Movement Servicing', 'Precision Assembly', 'Greasing/Cleaning']
+      }
+    };
+
+    const viewer = document.getElementById('obViewer');
+    const stage = document.getElementById('obStage');
+    const info = viewer.querySelector('.ob-info');
+    const nav = viewer.querySelector('.ob-nav');
+
+    const extra = document.createElement('div');
+    extra.className = 'ob-extra';
+    extra.hidden = true;
+    extra.innerHTML = '<p class="ob-desc"></p><h4 class="ob-skills-h">Skills used</h4><ul class="ob-skills"></ul>';
+
+    const layout = document.createElement('div');
+    layout.className = 'ob-layout';
+    const main = document.createElement('div');
+    main.className = 'ob-main';
+    const side = document.createElement('div');
+    side.className = 'ob-side';
+    main.append(stage, nav);
+    side.append(info, extra);
+    layout.append(main, side);
+    viewer.append(layout);
+
+    const descEl = extra.querySelector('.ob-desc');
+    const skillsH = extra.querySelector('.ob-skills-h');
+    const skillsEl = extra.querySelector('.ob-skills');
+
+    document.querySelectorAll('.ob-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const name = card.querySelector('.ob-name')?.textContent.trim() || '';
+        const d = DETAILS[name] || {};
+        if (name) document.getElementById('obTitle').textContent = name;
+
+        descEl.textContent = d.desc || '';
+        descEl.hidden = !d.desc;
+        skillsEl.innerHTML = '';
+        (d.skills || []).forEach(s => {
+          const li = document.createElement('li');
+          li.textContent = s;
+          skillsEl.appendChild(li);
+        });
+        skillsH.hidden = skillsEl.hidden = !(d.skills && d.skills.length);
+        extra.hidden = !d.desc && !(d.skills && d.skills.length);
+      });
+    });
+  })();
+</script>
+
+<script>
+  document.querySelectorAll('dialog video').forEach(v => { v.preload = 'none'; v.removeAttribute('autoplay'); v.pause(); });
+  document.querySelectorAll('dialog').forEach(d => {
+    new MutationObserver(() => {
+      d.querySelectorAll('video').forEach(v => { if (d.open) { v.preload = 'metadata'; v.play().catch(() => {}); } else { v.pause(); } });
+    }).observe(d, { attributes: true, attributeFilter: ['open'] });
+  });
+</script>
 
 </body>
 </html>
