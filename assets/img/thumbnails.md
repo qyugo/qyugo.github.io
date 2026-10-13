@@ -11,6 +11,8 @@ YVGESC:
 
 <img src="https://github.com/user-attachments/assets/94356e5a-d1d8-4541-9c04-5c2432c5c798" width="50%"/>
 
+<img width="3818" height="2918" alt="IMG_3823" src="https://github.com/user-attachments/assets/c2031f12-e17d-4904-a512-cbf7a6f4567e" />
+
 
 
 https://github.com/user-attachments/assets/99499fdc-717e-42fb-94e1-ed3baa9eeaf0
@@ -163,13 +165,32 @@ Calisthenics
 
 <img width="514" height="447" alt="Screenshot 2026-10-11 at 6 41 41 PM" src="https://github.com/user-attachments/assets/044a9a99-22ad-4941-92df-b4b3faf43568" />
 
+<img width="1179" height="621" alt="IMG_2915" src="https://github.com/user-attachments/assets/c456da6d-7176-4271-91b6-5ef1853ffee6" />
+
+
+
+https://github.com/user-attachments/assets/f30c2842-3bc2-4409-9eb3-0a7d60a1c7d3
+
+
+
+
 Myoelectric control
 
 <img width="787" height="440" alt="Screenshot 2026-10-11 at 6 43 39 PM" src="https://github.com/user-attachments/assets/be06f417-3af9-4895-9e15-84428e59910d" />
 
 
+
+https://github.com/user-attachments/assets/0339ff1c-c300-4ae1-ac93-ceb3d91477fc
+
+
+
 Mouse
 <img width="568" height="448" alt="Screenshot 2026-10-11 at 6 44 24 PM" src="https://github.com/user-attachments/assets/78c53766-9a8e-4683-909a-c87908145084" />
+
+
+
+https://github.com/user-attachments/assets/aaa713f2-81a4-48fd-bcb7-95391cb53a21
+
 
 
 watch
