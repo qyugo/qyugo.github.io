@@ -30,7 +30,7 @@ https://github.com/user-attachments/assets/7c8c5738-e686-40d8-ada2-72a4c363c0e5
 
 <img width="1152" height="695" alt="Screenshot 2026-10-14 at 12 42 15 AM" src="https://github.com/user-attachments/assets/3f4b989e-57a9-439d-a9ab-903436ed0406" />
 
-
+<img width="1015" height="876" alt="IMG_4112 Large" src="https://github.com/user-attachments/assets/c8804d98-b949-4778-9a4e-08acf5a5997c" />
 
 
 
@@ -38,6 +38,9 @@ Some assembled motors:
 
 
 <img width="1280" height="960" alt="motors330kb" src="https://github.com/user-attachments/assets/2d23d5fa-eef8-4dec-a6e5-b3c2493a7931" />
+
+<img width="1204" height="973" alt="IMG_4113 Large" src="https://github.com/user-attachments/assets/a55f5129-29e2-48e2-a0ae-001b3a263216" />
+
 
 
 
