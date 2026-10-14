@@ -306,9 +306,9 @@
       <div class="header-grid">  
         <div>                    
           <h1>Hugo F.</h1>
-          <p class="role">Actuator Hardware Enjoyer</p>
+          <p class="role">Actuator Hardware Enjoyer <br> BS MechE @ NYUAD</p>
           <p class="intro">
-            I enjoy building movement. Currently focusing on robotic actuator subsystems, contact me if you'd like me to work on a project.
+            Welcome to my portfolio, I enjoy building movement. Currently focusing on robotic actuator subsystems.
             <br>
           </p>
           <ul class="links">
@@ -324,7 +324,7 @@
 
     <main>
       <h2>Main: Actuator Projects of 2026</h2>
-      <p class="subtitle">Independent projects I designed, built, and tested this year, with full documentation. * Some project websites may be under construction. </p>
+      <p class="subtitle">Independent projects I designed, built, and tested this year, with full documentation. <br> *Some project websites may be under construction. </p>
 
       <div class="grid">
 
@@ -710,9 +710,13 @@
         </p>
 
         <ul class="specs">
-          <li><span>Mass</span> 843g (PETG)</li>
+          <li><span>Material</span> PETG, PA-CF15 (V2)</li>
+          <li><span>Mass</span> 843g</li>
+          <li><span>Height/Diameter</span> 102mm, 100mm</li>
+          <li><span>Reduction Ratio</span> 9:1</li>
           <li><span>Max Torque</span> TBD</li>
           <li><span>Backlash</span> 0.25mm</li>
+          
         </ul>
 
         <div class="actions">
@@ -749,10 +753,12 @@
             <li>PM Motor Design</li>
             <li>Airgap Flux</li>
             <li>Python</li>
+            <li>Graphical UI</li>
             <li>Slot Leakage</li>
             <li>Magnetic Permeability</li>
             <li>Thermal Management</li>
             <li>Temperature Flux Derating</li>
+            <li>Magnet Physics</li>
           </ul>
         </div>
       </div>
@@ -761,13 +767,25 @@
         <h3 id="preview-project2-title">Analytical Three-Phase Motor Model and Graphical UI</h3>
 
         <p>
-          PyQt5 UI implementing analytical equations for rotor geometry, material, dimensions, air gap distance, winding parameters, permanent magnet properties, correction factors (due to temperature, slot leakage) to produce estimated KV and current density for thermal management.
-        </p>
+          A Python-based calculator + UI for constructing three-phase permanent magnet motors using PyQt5. An analytical model for determining performance (torque, current density) from winding characteristics, stator/rotor geometry, magnetic flux, and correction factors. 
+<br>
+- Allows for inrunner/outrunner and slot/pole count configurations
+<br>
+- Allows for selection of plastic or metal rotor ring for prototyping purposes.
+<br>
+- Calculates airgap flux density while accounting for airgap length, Carter coefficients, slot leakage, temperature remanence derating, magnetic permeability, 
+<br>
+- Accounts for neodymium magnet grade and geometry
+<br>
+- Accounts for stator tooth/slot geometry, thickness, and material
+<br>
+- Accounts for series/parallel winding paths, star/delta connections, internal parallel strands for insulated copper windings, buildup, and turns per tooth.
+<br>
+- Accounts for magnet skew, winding pitch, and distribution factors for both concentrated and distributed windings.
+          </p>
 
         <ul class="specs">
-          <li><span>Label</span> Value</li>
-          <li><span>Label</span> Value</li>
-          <li><span>Status</span> Value</li>
+          <li><span>Language</span> Python</li>
         </ul>
 
         <div class="actions">
@@ -824,9 +842,10 @@
         </p>
 
         <ul class="specs">
-          <li><span>Label</span> Value</li>
-          <li><span>Label</span> Value</li>
-          <li><span>Status</span> Value</li>
+          <li><span>Current Sense</span> INA226</li>
+          <li><span>Field Energization</span> 6-12V</li>
+          <li><span>Load</span> 50W 8 Ohm Power Resistor</li>
+          <li><span>Status</span> Testing losses and efficiency map, ordering smaller resistors</li>
         </ul>
 
         <div class="actions">
@@ -887,7 +906,7 @@
           <li><span>Actuator Type</span> Custom McKibben (balloon + 1.25in. braided harness)</li>
           <li><span>Voltage</span> 12V Power -> 5V Logic (LM2596) </li>
           <li><span>Number of Actuators</span> Up to 12</li>
-          <li><span>Pressure Control Type</span> Hysteresis, Tire Compressor + Pressure Transducer</li>
+          <li><span>Pressure Control Type</span> Tire Pump + Pressure Transducer</li>
           <li><span>Hysteresis Control Hardware</span> Bosch Relay + MOSFET</li>
           <li><span>Actuation Control</span> I2C PWM -> transistor array -> Solenoid valve</li>
           <li><span>Status</span> V1 Concept Complete</li>
