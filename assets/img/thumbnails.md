@@ -173,6 +173,23 @@ Car
 Quad
 <img width="1280" height="868" alt="Screenshot 2026-10-11 at 6 42 24 PM Large" src="https://github.com/user-attachments/assets/112af977-dfde-4c4b-9607-c988172da1c4" />
 
+<img width="1179" height="771" alt="IMG_4471 Large" src="https://github.com/user-attachments/assets/71fa7461-e056-48a5-9daf-08d44fedfb58" />
+
+
+https://github.com/user-attachments/assets/cfc096f1-fc02-417a-969c-4052412ee00d
+
+
+
+https://github.com/user-attachments/assets/f7426069-72a6-47c1-9462-3e8af63d446b
+
+
+
+https://github.com/user-attachments/assets/d3a905e7-53ea-476b-9a81-c59c47ef9caa
+
+
+
+
+
 Calisthenics
 
 <img width="514" height="447" alt="Screenshot 2026-10-11 at 6 41 41 PM" src="https://github.com/user-attachments/assets/044a9a99-22ad-4941-92df-b4b3faf43568" />
