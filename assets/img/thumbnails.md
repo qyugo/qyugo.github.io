@@ -256,6 +256,9 @@ https://github.com/user-attachments/assets/6e05e3fa-97c7-4898-abce-f02ccf0d9781
 
 <img width="1179" height="856" alt="photo_2026-10-13 18 32 22" src="https://github.com/user-attachments/assets/f9f04f32-98e9-4fcd-90dd-e05b5210ed64" />
 
+<img width="1280" height="960" alt="learning2" src="https://github.com/user-attachments/assets/97c7c6f1-2bea-4b94-bfba-d5e73ce9df81" />
+
+
 
 
 
