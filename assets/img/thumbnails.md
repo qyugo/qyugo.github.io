@@ -2,6 +2,8 @@
 
 YVGESC:
 
+<img width="1674" height="932" alt="IMG_4118" src="https://github.com/user-attachments/assets/5b6c7541-d866-419e-b0cb-080224f72266" />
+
 
 
 <img width="1280" height="1095" alt="yvgesc368kb" src="https://github.com/user-attachments/assets/0a573223-623f-4b98-8a62-b545eca9694f" />
@@ -29,6 +31,8 @@ https://github.com/user-attachments/assets/7c8c5738-e686-40d8-ada2-72a4c363c0e5
 <img width="1150" height="689" alt="Screenshot 2026-10-14 at 12 41 43 AM" src="https://github.com/user-attachments/assets/58070d90-d1f3-4c61-8947-f1a67ea310bc" />
 
 <img width="1152" height="695" alt="Screenshot 2026-10-14 at 12 42 15 AM" src="https://github.com/user-attachments/assets/3f4b989e-57a9-439d-a9ab-903436ed0406" />
+
+build2:
 
 <img width="1015" height="876" alt="IMG_4112 Large" src="https://github.com/user-attachments/assets/c8804d98-b949-4778-9a4e-08acf5a5997c" />
 
