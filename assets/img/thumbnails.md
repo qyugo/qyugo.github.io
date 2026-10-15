@@ -261,6 +261,8 @@ SimpleFOC
 
 <img width="1280" height="960" alt="learning2" src="https://github.com/user-attachments/assets/7ceb0199-df76-4097-a8bb-2897a2e83f49" />
 
+<img width="1585" height="1206" alt="IMG_4086" src="https://github.com/user-attachments/assets/fd7574e3-35b9-47a0-8c63-59a6d93835af" />
+
 
 https://github.com/user-attachments/assets/6e05e3fa-97c7-4898-abce-f02ccf0d9781
 
