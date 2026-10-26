@@ -311,6 +311,31 @@
   @keyframes pl-spin { to { transform: rotate(360deg); } }
   @media (prefers-reduced-motion: reduce) { #preloader { display: none; } }
 
+  .actuators { margin-top: 3rem; }
+  .act-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  @media (max-width: 800px) { .act-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .act-grid { grid-template-columns: 1fr; } }
+  .act-card {
+    display: flex; flex-direction: column; background: var(--surface);
+    border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
+  }
+  .act-thumb { position: relative; aspect-ratio: 16 / 10; background: #222428; }
+  .act-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .act-ph {
+    position: absolute; inset: 0; display: grid; place-items: center;
+    font-size: 1.5rem; font-weight: 600; letter-spacing: 0.05em; color: var(--muted); opacity: 0.5;
+  }
+  .act-body { padding: 1rem 1.1rem 1.2rem; }
+  .act-head { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin: 0 0 0.35rem; }
+  .act-name { font-size: 1.05rem; font-weight: 600; margin: 0; }
+  .act-status {
+    font-size: 0.75rem; padding: 0.1rem 0.55rem; border: 1px solid var(--line);
+    border-radius: 3px; color: var(--muted); white-space: nowrap;
+  }
+  .act-status.built { color: #111214; background: var(--accent); border-color: var(--accent); }
+  .act-status.wip { color: var(--accent); border-color: var(--accent); }
+  .act-cap { color: var(--muted); font-size: 0.93rem; margin: 0; }
+
   </style>
   <noscript><style>#preloader { display: none; }</style></noscript>
 </head>
@@ -352,7 +377,7 @@
     </header>
 
     <main>
-      <h2>Main: Actuator Stack</h2>
+      <h2>1. Actuator Subsystems</h2>
       <p class="subtitle">Independent projects I designed and built to learn the full actuator stack (driver, BLDC motor, and drivetrains), with full documentation. <br> *Some project websites may be under construction. </p>
 
       <div class="grid">
@@ -448,6 +473,63 @@
       </div>
 
 
+
+<section class="actuators" id="actuators">
+        <h2>2. Actuator Lineup (In Progress)</h2>
+        <p class="subtitle">Complete actuator builds across a range of motor sizes, planned for upcoming robot projects.</p>
+
+        <div class="act-grid">
+
+            <div class="act-card" data-img="https://github.com/user-attachments/assets/07d3075c-f069-4dbb-b149-43cf08e8bd94">
+              <div class="act-thumb"><div class="act-ph">8308</div></div>
+              <div class="act-body">
+                <div class="act-head"><h3 class="act-name">8308 Actuator</h3><span class="act-status built">Built</span></div>
+                <p class="act-cap">Ø100mm, 9:1 quasi-direct drive for a hip/shoulder joint. 4th iteration from the QDD listed in Section 1. <br> Driven by my YVGESC-1 driver.</p>
+              </div>
+            </div>
+
+            <div class="act-card" data-img="https://github.com/user-attachments/assets/fecfa009-2fe9-4e73-9876-0e71fa17a7a3">
+              <div class="act-thumb"><div class="act-ph">2205</div></div>
+              <div class="act-body">
+                <div class="act-head"><h3 class="act-name">2205 Actuator</h3><span class="act-status wip">In progress</span></div>
+                <p class="act-cap">Ø42mm 2-stage, 24:1 drive for robot wrist/finger joints. <br> Driven by SimpleFOCMini + AS5600. <br> Learning Blender for rendering.</p>
+              </div>
+            </div>
+
+            <div class="act-card" data-img="https://github.com/user-attachments/assets/82fa657a-e70f-430f-8241-a147d4446990">
+              <div class="act-thumb"><div class="act-ph">3510</div></div>
+              <div class="act-body">
+                <div class="act-head"><h3 class="act-name">3510 Actuator</h3><span class="act-status wip">In progress</span></div>
+                <p class="act-cap">Medium-size actuator around a 35mm motor, planned for elbows/wrists.</p>
+              </div>
+            </div>
+
+            <div class="act-card" data-img="https://github.com/user-attachments/assets/25ff8494-86d6-43d3-8f32-2016f09102fc">
+              <div class="act-thumb"><div class="act-ph">4008</div></div>
+              <div class="act-body">
+                <div class="act-head"><h3 class="act-name">4008 Actuator</h3><span class="act-status wip">In progress</span></div>
+                <p class="act-cap">Medium-size actuator around a Ø40mm motor, planned for elbows/wrists.</p>
+              </div>
+            </div>
+
+            <div class="act-card" data-img="https://github.com/user-attachments/assets/c6ed34bc-2d0a-42e8-8aea-b175092b81e9">
+              <div class="act-thumb"><div class="act-ph">8110</div></div>
+              <div class="act-body">
+                <div class="act-head"><h3 class="act-name">8110 Actuator</h3><span class="act-status wip">Manufacturing</span></div>
+                <p class="act-cap">Fully custom 8110 motor, driver, and QDD for a robot shoulder/hip joint. <br> To be driven by YVGESC-1.</p>
+              </div>
+            </div>
+
+            <div class="act-card" data-img="https://github.com/user-attachments/assets/fcba2c37-982b-483e-b918-5b1159f72f8d">
+              <div class="act-thumb"><div class="act-ph">2804</div></div>
+              <div class="act-body">
+                <div class="act-head"><h3 class="act-name">2804 Actuator</h3><span class="act-status">Planned</span></div>
+                <p class="act-cap">Small gimbal-type actuator around a 100KV Ø28mm motor, for a robot neck/wrist joint.</p>
+              </div>
+            </div>
+
+        </div>
+      </section>
 
 <section class="other-builds" id="other-builds">
         <h2 class="ob-h">Other projects and things I've built <small>University projects and some smaller builds, no writeups attached. Click for photos.</small></h2>
@@ -712,6 +794,7 @@
       <div>
         <div class="gallery">
           <div class="gallery-track">
+            <img src="https://github.com/user-attachments/assets/ec7c8f04-55b6-4e16-8a7e-75ff1d892ad9" alt="qdd1build" loading="lazy" decoding="async">
             <img src="https://github.com/user-attachments/assets/67c1045a-c6aa-4b54-b15d-29fd0774b6e4" alt="qdd1cad" loading="lazy" decoding="async">
             <video src="https://github.com/user-attachments/assets/5a1d7501-7d94-43de-a842-1ed1a579741b" loop muted playsinline preload="none"></video>
             <video src="https://github.com/user-attachments/assets/de190b66-2fe3-469e-a8f6-fb3ca62649ce" loop muted playsinline preload="none"></video>
@@ -1644,6 +1727,26 @@ main .ob-h { display: block; }
     grid.addEventListener('scroll', update, { passive: true });
     addEventListener('resize', update);
     update();
+  })();
+</script>
+
+<script>
+  (function () {
+    const grid = document.querySelector('.act-grid');
+    if (!grid) return;
+
+    grid.querySelectorAll('.act-card').forEach(card => {
+      const src = (card.dataset.img || '').trim();
+      if (!src) return;
+      const thumb = card.querySelector('.act-thumb');
+      const img = new Image();
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.alt = card.querySelector('.act-name')?.textContent.trim() || '';
+      img.src = src;
+      thumb.querySelector('.act-ph')?.remove();
+      thumb.prepend(img);
+    });
   })();
 </script>
 
