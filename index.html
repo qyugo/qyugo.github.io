@@ -297,12 +297,35 @@
   #ascii-bg { -webkit-mask-image: linear-gradient(to right, #000 35%, transparent); mask-image: linear-gradient(to right, #000 35%, transparent); }
   #ascii-bg-r { -webkit-mask-image: linear-gradient(to left, #000 35%, transparent); mask-image: linear-gradient(to left, #000 35%, transparent); }
 
-
+  #preloader {
+    position: fixed; inset: 0; z-index: 2000; display: grid; place-items: center;
+    background: var(--bg); transition: opacity 0.45s ease, visibility 0.45s;
+  }
+  #preloader.done { opacity: 0; visibility: hidden; pointer-events: none; }
+  .pl-box { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+  .pl-ring { width: 64px; height: 64px; }
+  .pl-ring circle { fill: none; transform-origin: 32px 32px; }
+  .pl-outer { stroke: var(--accent); stroke-width: 2; stroke-dasharray: 40 14.45; animation: pl-spin 1.2s linear infinite; }
+  .pl-inner { stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 6 6; opacity: 0.6; animation: pl-spin 2.4s linear infinite reverse; }
+  .pl-label { font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+  @keyframes pl-spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { #preloader { display: none; } }
 
   </style>
+  <noscript><style>#preloader { display: none; }</style></noscript>
 </head>
 
 <body>
+
+  <div id="preloader" aria-hidden="true">
+    <div class="pl-box">
+      <svg class="pl-ring" viewBox="0 0 64 64">
+        <circle class="pl-outer" cx="32" cy="32" r="26"></circle>
+        <circle class="pl-inner" cx="32" cy="32" r="16"></circle>
+      </svg>
+      <span class="pl-label">qyugo</span>
+    </div>
+  </div>
 
   <canvas id="ascii-bg" aria-hidden="true"></canvas>
 
@@ -1082,6 +1105,7 @@
       mesh.castShadow = true;
       mesh.receiveShadow = true;
       pivot.add(mesh);
+      window.dispatchEvent(new Event('model-ready'));
     });
 
     function resize() {
@@ -1620,6 +1644,27 @@ main .ob-h { display: block; }
     grid.addEventListener('scroll', update, { passive: true });
     addEventListener('resize', update);
     update();
+  })();
+</script>
+
+<script>
+  (function () {
+    const el = document.getElementById('preloader');
+    if (!el) return;
+    const MIN = 700, MAX = 4000, t0 = performance.now();
+    let loaded = document.readyState === 'complete', model = false, finished = false;
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      setTimeout(() => {
+        el.classList.add('done');
+        setTimeout(() => el.remove(), 600);
+      }, Math.max(0, MIN - (performance.now() - t0)));
+    };
+    const check = () => { if (loaded && model) finish(); };
+    if (!loaded) addEventListener('load', () => { loaded = true; check(); });
+    addEventListener('model-ready', () => { model = true; check(); });
+    setTimeout(finish, MAX);
   })();
 </script>
 
