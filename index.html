@@ -303,10 +303,14 @@
   }
   #preloader.done { opacity: 0; visibility: hidden; pointer-events: none; }
   .pl-box { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-  .pl-ring { width: 64px; height: 64px; }
-  .pl-ring circle { fill: none; transform-origin: 32px 32px; }
-  .pl-outer { stroke: var(--accent); stroke-width: 2; stroke-dasharray: 40 14.45; animation: pl-spin 1.2s linear infinite; }
-  .pl-inner { stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 6 6; opacity: 0.6; animation: pl-spin 2.4s linear infinite reverse; }
+  .pl-ring { width: 72px; height: 72px; }
+  .pl-ring circle { fill: none; }
+  .pl-rotor { transform-origin: 36px 36px; animation: pl-spin 2.4s linear infinite; }
+  .pl-shell { stroke: var(--muted); stroke-width: 1.5; }
+  .pl-mag-n { stroke: #ffffff; stroke-width: 4; stroke-dasharray: 12.4 16.324; }
+  .pl-mag-s { stroke: var(--muted); stroke-width: 4; stroke-dasharray: 12.4 16.324; stroke-dashoffset: -14.362; opacity: 0.6; }
+  .pl-teeth { stroke: var(--muted); stroke-width: 11; stroke-dasharray: 7 4.257; opacity: 0.45; }
+  .pl-yoke { stroke: var(--muted); stroke-width: 4; opacity: 0.45; }
   .pl-label { font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
   @keyframes pl-spin { to { transform: rotate(360deg); } }
   @media (prefers-reduced-motion: reduce) { #preloader { display: none; } }
@@ -344,9 +348,14 @@
 
   <div id="preloader" aria-hidden="true">
     <div class="pl-box">
-      <svg class="pl-ring" viewBox="0 0 64 64">
-        <circle class="pl-outer" cx="32" cy="32" r="26"></circle>
-        <circle class="pl-inner" cx="32" cy="32" r="16"></circle>
+      <svg class="pl-ring" viewBox="0 0 72 72">
+        <g class="pl-rotor">
+          <circle class="pl-shell" cx="36" cy="36" r="35"></circle>
+          <circle class="pl-mag-n" cx="36" cy="36" r="32"></circle>
+          <circle class="pl-mag-s" cx="36" cy="36" r="32"></circle>
+        </g>
+        <circle class="pl-teeth" cx="36" cy="36" r="21.5"></circle>
+        <circle class="pl-yoke" cx="36" cy="36" r="14.5"></circle>
       </svg>
       <span class="pl-label">qyugo</span>
     </div>
