@@ -14,17 +14,17 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #111214;
+      --bg: #000000;
       --surface: #1a1b1e;
       --line: #2c2e32;
       --text: #e8e8e6;
       --muted: #9a9c9f;
       --accent: #f2d44e;
-      --font: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+      --font: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     }
 
     * { box-sizing: border-box; }
@@ -34,8 +34,8 @@
       background: var(--bg);
       color: var(--text);
       font-family: var(--font);
-      font-size: 1rem;
-      line-height: 1.6;
+      font-size: 0.92rem;
+      line-height: 1.65;
     }
 
     a { color: inherit; }
@@ -86,7 +86,7 @@
     .model canvas { position: relative; z-index: 1; display: block; width: 100%; height: 100%; }
     /* End STL block */
 
-    header h1 { font-size: 2rem; font-weight: 600; line-height: 1.2; margin: 0 0 0.35rem; }
+    header h1 { font-size: 2rem; font-weight: 600; line-height: 1.2; letter-spacing: -0.03em; margin: 0 0 0.35rem; }
     .role { color: var(--muted); font-size: 1.1rem; margin: 0 0 1.5rem; }
     .intro { max-width: 60ch; margin: 0 0 1.75rem; }
 
@@ -99,6 +99,7 @@
     main { padding: 1.5rem 0 4rem; }
     main h2 { font-size: 1.5rem; font-weight: 600; margin: 0 0 1.25rem; }
     main h2 { margin-bottom: 0.25rem; } 
+    main h2::before { content: "// "; color: var(--accent); font-weight: 500; }
     .subtitle { margin: 0 0 1.25rem; color: var(--muted); font-size: 0.9rem; }
     
 
@@ -288,15 +289,6 @@
   .ob-close { position: absolute; top: 1rem; right: 1rem; }
 
 
-  #ascii-bg, #ascii-bg-r {
-  position: fixed; top: 0; height: 100%;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0.12;
-}
-  #ascii-bg { -webkit-mask-image: linear-gradient(to right, #000 35%, transparent); mask-image: linear-gradient(to right, #000 35%, transparent); }
-  #ascii-bg-r { -webkit-mask-image: linear-gradient(to left, #000 35%, transparent); mask-image: linear-gradient(to left, #000 35%, transparent); }
-
   #preloader {
     position: fixed; inset: 0; z-index: 2000; display: grid; place-items: center;
     background: var(--bg); transition: opacity 0.45s ease, visibility 0.45s;
@@ -340,6 +332,82 @@
   .act-status.wip { color: var(--accent); border-color: var(--accent); }
   .act-cap { color: var(--muted); font-size: 0.93rem; margin: 0; }
 
+  body { overflow-x: clip; }
+ 
+  .spotlight {
+    position: relative;
+    width: 100%;
+    margin: 3.5rem 0 0;
+    aspect-ratio: 16 / 9;
+    background: #050506;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    isolation: isolate;
+  }
+ 
+  .sp-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease; }
+  .sp-slide.active { opacity: 1; }
+  .sp-slide img {
+    width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;
+    transform: scale(1);
+    transition: transform 16s ease-out;
+  }
+  .sp-slide.active img { transform: scale(1.07); }   /* slow push-in */
+ 
+  /* vignette + bottom fade */
+  .spotlight::before {
+    content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+    background:
+      radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,.6) 100%),
+      linear-gradient(to top, rgba(0,0,0,.85) 0%, transparent 38%);
+  }
+  /* letterbox bars */
+  .spotlight::after {
+    content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none;
+    border-top: 1rem solid #000; border-bottom: 1rem solid #000;
+  }
+ 
+  .sp-empty {
+    position: absolute; inset: 0; display: grid; place-items: center;
+    color: var(--muted); font-size: 0.9rem; letter-spacing: .15em; text-transform: uppercase;
+  }
+  .spotlight.has-photos .sp-empty { display: none; }
+ 
+  .sp-caption {
+    position: absolute; z-index: 4;
+    left: 1.5rem;
+    bottom: 2rem;
+    max-width: 52ch;
+  }
+  .sp-tag { font-size: .75rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); }
+  .sp-title { font-size: clamp(1.3rem, 3vw, 2rem); font-weight: 600; line-height: 1.1; margin: .35rem 0 .5rem; color: #fff; }
+  .sp-desc { margin: 0; color: rgba(255,255,255,.75); font-size: 1rem; }
+ 
+  .sp-ui {
+    position: absolute; z-index: 4;
+    right: 1.5rem;
+    bottom: 2rem;
+    display: flex; align-items: center; gap: .75rem; font-size: .85rem; color: var(--muted);
+  }
+  .sp-ui button {
+    width: 2.5rem; height: 2.5rem; border-radius: 50%;
+    border: 1px solid var(--line); background: rgba(17,18,20,.75);
+    color: var(--text); font-size: 1.1rem; cursor: pointer;
+  }
+  .sp-ui button:hover { border-color: var(--accent); color: var(--accent); }
+ 
+  .spotlight:fullscreen { width: 100vw; height: 100vh; aspect-ratio: auto; margin: 0; border: 0; border-radius: 0; }
+  .spotlight:fullscreen::after { border-width: 2.5vh 0; }
+  .spotlight:fullscreen .sp-caption { left: 4rem; bottom: calc(2.5vh + 2rem); }
+  .spotlight:fullscreen .sp-ui { right: 4rem; bottom: calc(2.5vh + 2rem); }
+  .spotlight:fullscreen .sp-title { font-size: clamp(1.8rem, 4.5vw, 3.2rem); }
+  .spotlight:fullscreen .sp-slide img { object-fit: contain; cursor: zoom-out; }
+ 
+  @media (prefers-reduced-motion: reduce) {
+    .sp-slide img, .sp-slide.active img { transition: none; transform: none; }
+  }
+
   </style>
   <noscript><style>#preloader { display: none; }</style></noscript>
 </head>
@@ -361,8 +429,6 @@
     </div>
   </div>
 
-  <canvas id="ascii-bg" aria-hidden="true"></canvas>
-
   <div class="wrap">
 
     <header>
@@ -371,7 +437,7 @@
           <h1>Hugo Fan</h1>
           <p class="role">Actuator Hardware Enjoyer </p>
           <p class="intro">
-            Full-stack actuator hardware: FOC drivers, custom motors + sim model, drivetrains, and low-cost testing.
+            Fully custom drivers, motors, drivetrains, test rigs, and analytical simulation models.
             <br>
           </p>
           <ul class="links">
@@ -484,7 +550,7 @@
 
 
 <section class="actuators" id="actuators">
-        <h2>2. Actuator Lineup (In Progress)</h2>
+        <h2>2. Actuator Lineup (In Progress, Robot Coming Soon)</h2>
         <p class="subtitle">Complete actuator builds across a range of motor sizes, planned for upcoming robot projects.</p>
 
         <div class="act-grid">
@@ -556,6 +622,24 @@
 
         </div>
       </section>
+
+      <!-- spotlight actuators -->
+
+<section class="spotlight" id="spotlight" aria-label="Actuator spotlight">
+  <div class="sp-empty">Add actuator photos</div>
+ 
+  <div class="sp-caption">
+    <div class="sp-tag">Spotlight</div>
+    <h3 class="sp-title" id="spTitle"></h3>
+    <p class="sp-desc" id="spDesc"></p>
+  </div>
+ 
+  <div class="sp-ui">
+    <button type="button" id="spPrev" aria-label="Previous photo">&#8249;</button>
+    <span id="spCount"></span>
+    <button type="button" id="spNext" aria-label="Next photo">&#8250;</button>
+  </div>
+</section>
 
 <section class="other-builds" id="other-builds">
         <h2 class="ob-h">Other projects and things I've built <small>University projects and some smaller builds, no writeups attached. Click for photos.</small></h2>
@@ -1257,6 +1341,64 @@ renderer.setAnimationLoop(() => {
       <button id="obNext" type="button" aria-label="Next">&#8250;</button>
     </div>
   </div>
+
+  <script>
+(function () {
+  
+  const PHOTOS = [
+    { src: "https://github.com/user-attachments/assets/d6119f1e-9a29-4dcd-a443-5902e6758067", title: "", desc: "Protype Actuator Lineup, front view (10/2026)" },
+    { src: "https://github.com/user-attachments/assets/ef9267a6-ca16-4692-bf01-0affcd68ad76", title: "", desc: "Protype Actuator Lineup, back view (10/2026)" },
+  ];
+
+  
+ 
+  const root = document.getElementById('spotlight');
+  if (!root) return;
+  const titleEl = document.getElementById('spTitle');
+  const descEl = document.getElementById('spDesc');
+  const countEl = document.getElementById('spCount');
+  const prev = document.getElementById('spPrev');
+  const next = document.getElementById('spNext');
+  let idx = 0, timer;
+ 
+  PHOTOS.forEach((p, i) => {
+    const slide = document.createElement('div');
+    slide.className = 'sp-slide';
+    const img = new Image();
+    img.src = p.src; img.alt = p.title || 'Actuator photo';
+    img.loading = i === 0 ? 'eager' : 'lazy'; img.decoding = 'async';
+    img.addEventListener('click', () => {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else root.requestFullscreen && root.requestFullscreen();
+    });
+    slide.appendChild(img);
+    root.insertBefore(slide, root.firstChild);
+  });
+ 
+  const slides = [...root.querySelectorAll('.sp-slide')].reverse(); // restore array order
+ 
+  function show(i) {
+    if (!slides.length) return;
+    idx = (i + slides.length) % slides.length;
+    slides.forEach((s, n) => s.classList.toggle('active', n === idx));
+    titleEl.textContent = PHOTOS[idx].title || '';
+    descEl.textContent = PHOTOS[idx].desc || '';
+    countEl.textContent = (idx + 1) + ' / ' + slides.length;
+  }
+  function restart() {
+    clearInterval(timer);
+    if (slides.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches)
+      timer = setInterval(() => show(idx + 1), 8000);
+  }
+ 
+  if (!slides.length) { prev.hidden = next.hidden = true; return; }
+  root.classList.add('has-photos');
+  prev.hidden = next.hidden = slides.length < 2;
+  prev.addEventListener('click', () => { show(idx - 1); restart(); });
+  next.addEventListener('click', () => { show(idx + 1); restart(); });
+  show(0); restart();
+})();
+</script>
  
   <script>
     (function () {
@@ -1326,125 +1468,6 @@ renderer.setAnimationLoop(() => {
       });
     })();
   </script>
-
-<script>
-(function () {
-  const IMAGE_PATH = 'assets/bg.png';  
-  const RAMP = ' .:-=+*#%@';
-  const CELL = 12; //char size
-  const CONTENT_W = 1000; //center gap
-  const FPS = 6;
-  const SHIMMER = 0.06; // 0 = no movement
-  const SPEED = 0.5;
-  const MAX_SRC = 200; // downscale to px
-
-  const cvL = document.getElementById('ascii-bg');
-  const cvR = cvL.cloneNode();
-  cvR.id = 'ascii-bg-r';
-  cvL.after(cvR);
-  const ctxL = cvL.getContext('2d');
-  const ctxR = cvR.getContext('2d');
-
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const CW = CELL * 0.6;
-  let useImage = !!IMAGE_PATH;
-  let small = null, lum = null;
-  let cols = 0, rows = 0, sideCols = 0;
-
-  function sample() {
-    if (!small) return;
-    const off = document.createElement('canvas');
-    off.width = cols; off.height = rows;
-    const o = off.getContext('2d');
-    const s = Math.max(cols / small.width, rows / small.height);
-    const w = small.width * s, h = small.height * s;
-    o.drawImage(small, (cols - w) / 2, (rows - h) / 2, w, h);
-    const d = o.getImageData(0, 0, cols, rows).data;
-    lum = new Float32Array(cols * rows);
-    for (let i = 0; i < lum.length; i++)
-      lum[i] = (0.2126 * d[i * 4] + 0.7152 * d[i * 4 + 1] + 0.0722 * d[i * 4 + 2]) / 255;
-  }
-
-  function ch(x, y, t) {
-    let v = lum
-      ? lum[y * cols + x] + SHIMMER * Math.sin(x * 0.25 + y * 0.15 + t * SPEED)
-      : 0.5 + 0.5 * Math.sin(x * 0.12 + t * SPEED) * Math.cos(y * 0.2 - t * SPEED * 0.7);
-    v = Math.max(0, Math.min(0.999, v));
-    return RAMP[Math.floor(v * RAMP.length)];
-  }
-
-  function drawSide(ctx, startCol, t) {
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    ctx.font = CELL + 'px monospace';
-    ctx.fillStyle = '#fff';
-    ctx.textBaseline = 'top';
-    for (let y = 0; y < rows; y++) {
-      let s = '';
-      for (let x = 0; x < sideCols; x++) s += ch(startCol + x, y, t);
-      ctx.fillText(s, 0, y * CELL);
-    }
-  }
-
-  function draw(t) {
-    if (!sideCols) return;
-    drawSide(ctxL, 0, t);
-    drawSide(ctxR, cols - sideCols, t);
-  }
-
-  function size() {
-    const vw = innerWidth, vh = innerHeight;
-    cols = Math.ceil(vw / CW);
-    rows = Math.ceil(vh / CELL);
-    sideCols = Math.max(0, Math.floor(((vw - CONTENT_W) / 2) / CW));
-    const px = Math.ceil(sideCols * CW);
-    [cvL, cvR].forEach(c => {
-      c.width = px;
-      c.height = sideCols ? vh : 0;
-      c.style.width = px + 'px';
-    });
-    cvL.style.left = '0';
-    cvR.style.right = '0';
-    if (useImage) sample();
-    draw(0);
-  }
-
-  let last = 0;
-  function loop(ms) {
-    if (ms - last > 1000 / FPS) { last = ms; draw(ms / 1000); }
-    requestAnimationFrame(loop);
-  }
-
-  function start() {
-    size();
-    const animate = !reduce && (!useImage || SHIMMER > 0);
-    if (animate) requestAnimationFrame(loop);
-  }
-
-  let rt;
-  addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(size, 150); });
-
-  if (useImage) {
-    const img = new Image();
-    img.onload = () => {
-      img.onload = img.onerror = null;
-      const s = Math.min(1, MAX_SRC / Math.max(img.naturalWidth, img.naturalHeight));
-      small = document.createElement('canvas');
-      small.width = Math.max(1, Math.round(img.naturalWidth * s));
-      small.height = Math.max(1, Math.round(img.naturalHeight * s));
-      small.getContext('2d').drawImage(img, 0, 0, small.width, small.height);
-      img.src = '';
-      start();
-    };
-    img.onerror = () => { useImage = false; start(); };
-    img.src = IMAGE_PATH;
-  } else {
-    start();
-  }
-})();
-
-
-
-</script>
 
 <style>
   #obCap { display: none; }
